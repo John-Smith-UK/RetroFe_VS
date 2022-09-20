@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e8118228-8f8c-4c25-be64-6d9b0c5c3f70}</ProjectGuid>
+    <RootNamespace>RetroFe</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)debug</TargetName>
+    <OutDir>.\RetroFE\core\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
+    <OutDir>.\RetroFE\core\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>giflib.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <CopyFileToFolders>
+      <DestinationFolders>$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>giflib.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Collection\CollectionInfo.cpp" />
+    <ClCompile Include="Source\Collection\CollectionInfoBuilder.cpp" />
+    <ClCompile Include="Source\Collection\Item.cpp" />
+    <ClCompile Include="Source\Collection\MenuParser.cpp" />
+    <ClCompile Include="Source\Control\JoyAxisHandler.cpp" />
+    <ClCompile Include="Source\Control\JoyButtonHandler.cpp" />
+    <ClCompile Include="Source\Control\JoyHatHandler.cpp" />
+    <ClCompile Include="Source\Control\KeyboardHandler.cpp" />
+    <ClCompile Include="Source\Control\MouseButtonHandler.cpp" />
+    <ClCompile Include="Source\Control\UserInput.cpp" />
+    <ClCompile Include="Source\Database\Configuration.cpp" />
+    <ClCompile Include="Source\Database\DB.cpp" />
+    <ClCompile Include="Source\Database\MetadataDatabase.cpp" />
+    <ClCompile Include="Source\Execute\AttractMode.cpp" />
+    <ClCompile Include="Source\Execute\Launcher.cpp" />
+    <ClCompile Include="Source\Graphics\Animate\Animation.cpp" />
+    <ClCompile Include="Source\Graphics\Animate\AnimationEvents.cpp" />
+    <ClCompile Include="Source\Graphics\Animate\Tween.cpp" />
+    <ClCompile Include="Source\Graphics\Animate\TweenSet.cpp" />
+    <ClCompile Include="Source\Graphics\ComponentItemBinding.cpp" />
+    <ClCompile Include="Source\Graphics\ComponentItemBindingBuilder.cpp" />
+    <ClCompile Include="Source\Graphics\Component\Component.cpp" />
+    <ClCompile Include="Source\Graphics\Component\Container.cpp" />
+    <ClCompile Include="Source\Graphics\Component\Image.cpp" />
+    <ClCompile Include="Source\Graphics\Component\ImageBuilder.cpp" />
+    <ClCompile Include="Source\Graphics\Component\ReloadableMedia.cpp" />
+    <ClCompile Include="Source\Graphics\Component\ReloadableScrollingText.cpp" />
+    <ClCompile Include="Source\Graphics\Component\ReloadableText.cpp" />
+    <ClCompile Include="Source\Graphics\Component\ScrollingList.cpp" />
+    <ClCompile Include="Source\Graphics\Component\SDL_gifwrap.c" />
+    <ClCompile Include="Source\Graphics\Component\Text.cpp" />
+    <ClCompile Include="Source\Graphics\Component\Video.cpp" />
+    <ClCompile Include="Source\Graphics\Component\VideoBuilder.cpp" />
+    <ClCompile Include="Source\Graphics\Component\VideoComponent.cpp" />
+    <ClCompile Include="Source\Graphics\Font.cpp" />
+    <ClCompile Include="Source\Graphics\FontCache.cpp" />
+    <ClCompile Include="Source\Graphics\Page.cpp" />
+    <ClCompile Include="Source\Graphics\PageBuilder.cpp" />
+    <ClCompile Include="Source\Graphics\ViewInfo.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Menu\Menu.cpp" />
+    <ClCompile Include="Source\RetroFE.cpp" />
+    <ClCompile Include="Source\SDL.cpp" />
+    <ClCompile Include="Source\Sound\Sound.cpp" />
+    <ClCompile Include="Source\Utility\Log.cpp" />
+    <ClCompile Include="Source\Utility\Utils.cpp" />
+    <ClCompile Include="Source\Version.cpp" />
+    <ClCompile Include="Source\Video\GStreamerVideo.cpp" />
+    <ClCompile Include="Source\Video\VideoFactory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Collection\CollectionInfo.h" />
+    <ClInclude Include="Source\Collection\CollectionInfoBuilder.h" />
+    <ClInclude Include="Source\Collection\Item.h" />
+    <ClInclude Include="Source\Collection\MenuParser.h" />
+    <ClInclude Include="Source\Control\InputHandler.h" />
+    <ClInclude Include="Source\Control\JoyAxisHandler.h" />
+    <ClInclude Include="Source\Control\JoyButtonHandler.h" />
+    <ClInclude Include="Source\Control\JoyHatHandler.h" />
+    <ClInclude Include="Source\Control\KeyboardHandler.h" />
+    <ClInclude Include="Source\Control\MouseButtonHandler.h" />
+    <ClInclude Include="Source\Control\UserInput.h" />
+    <ClInclude Include="Source\Database\Configuration.h" />
+    <ClInclude Include="Source\Database\DB.h" />
+    <ClInclude Include="Source\Database\Metadata.h" />
+    <ClInclude Include="Source\Database\MetadataDatabase.h" />
+    <ClInclude Include="Source\Execute\AttractMode.h" />
+    <ClInclude Include="Source\Execute\Launcher.h" />
+    <ClInclude Include="Source\Graphics\Animate\Animation.h" />
+    <ClInclude Include="Source\Graphics\Animate\AnimationEvents.h" />
+    <ClInclude Include="Source\Graphics\Animate\Tween.h" />
+    <ClInclude Include="Source\Graphics\Animate\TweenSet.h" />
+    <ClInclude Include="Source\Graphics\Animate\TweenTypes.h" />
+    <ClInclude Include="Source\Graphics\ComponentItemBinding.h" />
+    <ClInclude Include="Source\Graphics\ComponentItemBindingBuilder.h" />
+    <ClInclude Include="Source\Graphics\Component\Component.h" />
+    <ClInclude Include="Source\Graphics\Component\Container.h" />
+    <ClInclude Include="Source\Graphics\Component\Image.h" />
+    <ClInclude Include="Source\Graphics\Component\ImageBuilder.h" />
+    <ClInclude Include="Source\Graphics\Component\ReloadableMedia.h" />
+    <ClInclude Include="Source\Graphics\Component\ReloadableScrollingText.h" />
+    <ClInclude Include="Source\Graphics\Component\ReloadableText.h" />
+    <ClInclude Include="Source\Graphics\Component\ScrollingList.h" />
+    <ClInclude Include="Source\Graphics\Component\SDL_gifwrap.h" />
+    <ClInclude Include="Source\Graphics\Component\Text.h" />
+    <ClInclude Include="Source\Graphics\Component\Video.h" />
+    <ClInclude Include="Source\Graphics\Component\VideoBuilder.h" />
+    <ClInclude Include="Source\Graphics\Component\VideoComponent.h" />
+    <ClInclude Include="Source\Graphics\Font.h" />
+    <ClInclude Include="Source\Graphics\FontCache.h" />
+    <ClInclude Include="Source\Graphics\Page.h" />
+    <ClInclude Include="Source\Graphics\PageBuilder.h" />
+    <ClInclude Include="Source\Graphics\ViewInfo.h" />
+    <ClInclude Include="Source\Menu\Menu.h" />
+    <ClInclude Include="Source\RetroFE.h" />
+    <ClInclude Include="Source\SDL.h" />
+    <ClInclude Include="Source\Sound\Sound.h" />
+    <ClInclude Include="Source\Utility\Log.h" />
+    <ClInclude Include="Source\Utility\Utils.h" />
+    <ClInclude Include="Source\Version.h" />
+    <ClInclude Include="Source\Video\GStreamerVideo.h" />
+    <ClInclude Include="Source\Video\IVideo.h" />
+    <ClInclude Include="Source\Video\VideoFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Dlls\giflib.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\liba52-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libass-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libbz2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libcairo-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libcairo-gobject-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libcairo-script-interpreter-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libcharset-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libcroco-0.6-3.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libdca-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libdv-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libdvdnav-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libdvdnavmini-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libdvdread-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libexpat-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libfaad-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libffi-6.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libFLAC-8.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libfontconfig-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libfreetype-6.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libfribidi-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgcc_s_sjlj-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgcrypt-20.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgdk_pixbuf-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libges-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgio-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libglib-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgmodule-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgmp-10.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgnl.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgnutls-28.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgnutls-openssl-27.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgnutlsxx-28.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgobject-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgomp-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgpg-error-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsta52dec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaccurip.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstadder.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstadpcmdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstadpcmenc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaiff.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstalaw.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstallocators-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstalpha.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstalphacolor.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstamrnb.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstamrwbdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstapetag.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstapp-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstapp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstasf.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstasfmux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstassrender.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudio-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudioconvert.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudiofx.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudiofxbad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudioparsers.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudiorate.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudioresample.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudiotestsrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstaudiovisualizers.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstauparse.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstautoconvert.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstautodetect.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstavi.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstbadbase-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstbadvideo-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstbase-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstbasecamerabinsrc-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstbayer.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcairo.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcamerabin2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcodecparsers-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcoloreffects.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcontroller-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcoreelements.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstcutter.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstd3dvideosink.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdashdemux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdataurisrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdebug.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdebugutilsbad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdeinterlace.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdirectsoundsink.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdirectsoundsrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdtmf.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdtsdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdv.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdvbsuboverlay.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdvdlpcmdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdvdread.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdvdspu.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstdvdsub.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsteffectv.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstencodebin.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstequalizer.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfaad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfft-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfieldanalysis.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstflac.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstflv.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstflxdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfragmented.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfreeverb.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstfrei0r.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgaudieffects.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgdkpixbuf.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgdp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgeometrictransform.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgio.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgl-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgoom.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstgoom2k1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsticydemux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstid3demux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstid3tag.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstimagefreeze.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstinsertbin-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstinterlace.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstinterleave.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstisomp4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstivtc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstjpeg.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstjpegformat.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstkate.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstlevel.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstlibav.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstlibvisual.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstliveadder.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmatroska.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmidi.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmms.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpeg2dec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpegpsdemux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpegpsmux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpegts-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpegtsdemux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmpegtsmux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmulaw.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmultifile.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmultipart.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstmxf.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstnet-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstogg.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstopengl.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstopus.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstpango.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstpbutils-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstpcapparse.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstphotography-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstplayback.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstpng.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstpnm.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrawparse.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstreamer-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstremovesilence.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstreplaygain.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstresindvd.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrfbsrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstriff-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrmdemux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrsvg.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtmp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtp-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtpmanager.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtsp-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtsp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstrtspserver-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstschro.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsdp-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsdpelem.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsegmentclip.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstshapewipe.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsiren.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsmooth.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsmoothstreaming.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsmpte.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsouphttpsrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstspectrum.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstspeed.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstspeex.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsubenc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstsubparse.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsttag-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsttaglib.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsttcp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsttheora.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsttypefindfunctions.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstudp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsturidownloader-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvalidate-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideo-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideobox.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideoconvert.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideocrop.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideofilter.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideofiltersbad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideomixer.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideoparsersbad.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideorate.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideoscale.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvideotestsrc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvoaacenc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvolume.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvorbis.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstvpx.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstwasapi.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstwavenc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstwavpack.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstwavparse.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstwinscreencap.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstx264.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgstxingmux.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsty4mdec.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgsty4menc.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libgthread-2.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libharfbuzz-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libhogweed-2-5.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libiconv-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libintl-8.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libjpeg-8.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libjpeg-9.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libkate-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libmikmod-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libmms-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libmodplug-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libmpeg2-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libmpeg2convert-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libnettle-4-7.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libogg-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\liboggkate-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libopencore-amrnb-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libopencore-amrwb-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libopus-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\liborc-0.4-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\liborc-test-0.4-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpango-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpangocairo-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpangoft2-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpangowin32-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpixman-1-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libpng16-16.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\librsvg-2-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\librtmp.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libschroedinger-1.0-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libsoup-2.4-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libspeex-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libspeexdsp-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libstdc++-6.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtag.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtag_c.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtasn1-3.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtheora-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtheoradec-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtheoraenc-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libtiff-5.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libvisual-0.4-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libvo-aacenc-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libvorbis-0.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libvorbisenc-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libvorbisfile-3.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libwavpack-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libwebp-4.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libwinpthread-1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libx264-140.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libxml2-2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\libz.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\SDL2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\SDL2_image.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\SDL2_mixer.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\SDL2_ttf.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\smpeg2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Dlls\zlib1.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Dlls\OpenSans.ttf">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
