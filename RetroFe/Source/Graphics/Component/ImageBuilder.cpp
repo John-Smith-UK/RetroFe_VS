@@ -29,6 +29,8 @@ Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, i
     extensions.push_back("JPG");
     extensions.push_back("jpeg");
     extensions.push_back("JPEG");
+    extensions.push_back("gif");
+    extensions.push_back("GIF");
 
     std::string prefix = Utils::combinePath(path, name);
     std::string file;

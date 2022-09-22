@@ -96,9 +96,6 @@
     <ClCompile Include="Source\Graphics\Component\ScrollingList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\Component\SDL_gifwrap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\Component\Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -279,9 +276,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\SDL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\Component\SDL_gifwrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Sound\Sound.h">

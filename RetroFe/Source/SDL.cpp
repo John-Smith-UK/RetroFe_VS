@@ -20,6 +20,8 @@
 #include "Utility/Log.h"
 #include <SDL_mixer.h>
 
+
+
 std::vector<SDL_Window *>   SDL::window_;
 std::vector<SDL_Renderer *> SDL::renderer_;
 SDL_mutex                  *SDL::mutex_ = NULL;
