@@ -30,7 +30,34 @@ public:
     static std::string getDirectory(std::string filePath);
     static std::string getParentDirectory(std::string filePath);
     static std::string getFileName(std::string filePath);
+   
+    /* whats file format options*/
+    enum FILE_TYPE {
+        JPG,
+        PNG,
+        JPEG,
+        GIF,
+        
+        
+    };
+    /*lib type support*/
+
+    enum LIB_TYPE_SUPPORT {
+        TYPE_SDL,
+        TYPE_GIFLIB,
+    };
+
+    enum EXCEPT {
+        EXCEPT_IMG_LOAD_FAIL,
+        EXCEPT_IMG_OPEN_FAIL
+    }; 
+
+    static int formatSupport(std::string &extensions);
+    static int libSupport(std::string &extensions);
+
+    //static bool findMatchingFile(std::string prefix, std::string &extensions, std::string& file);
     static bool findMatchingFile(std::string prefix, std::vector<std::string> &extensions, std::string &file);
+    
     static std::string toLower(std::string str);
     static std::string uppercaseFirst(std::string str);
     static std::string filterComments(std::string line);

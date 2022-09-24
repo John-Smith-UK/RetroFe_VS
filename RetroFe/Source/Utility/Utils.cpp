@@ -33,6 +33,68 @@ Utils::~Utils()
 {
 }
 
+
+/* extension 	> File extension as String
+* return - int 	< FILE_TYPE of file type or -1 if no match
+*/
+int Utils::formatSupport(std::string &extensions) {
+    // convert character to upper case for comparison
+    auto upper = [](char a) -> char {
+        if (a > 0x60 && a < 0x7B) return (char)(a - 0x20);
+        else return a;
+    };
+
+    // convert extension string, ignoring leading dot
+    std::string extensionUppercase = "";
+    for (unsigned i = 1; i < extensions.length(); i++) {
+        extensionUppercase += upper(extensions[i]);
+    }
+
+        // sort by first character of extension
+    switch (extensionUppercase[0]) {
+    case 'G':
+        /* GIF */
+        if (!extensionUppercase.compare("GIF"))  return GIF;
+        break;
+    case 'J':
+        /* JP(E)G */
+        if (!extensionUppercase.compare("JPG"))  return JPG;
+        if (!extensionUppercase.compare("JPEG")) return JPG;
+        break;
+    case 'P':
+        /* PNG */
+        if (!extensionUppercase.compare("PNG"))  return PNG;
+        break;
+    default:
+        return -1;
+    }
+
+    return -1;
+}
+
+
+
+/**
+* formatSupport	- Return library supporting file type
+* extension 	> File extension as String                  ---DISABLE  LINE 105 TO 114 UPPERCASE----
+* return - int 	< LIB_TYPE_SUPPORT or -1 if unsupported
+*/
+int Utils::libSupport(std::string &extensions) {
+    switch (formatSupport(extensions)) {
+    case JPG:
+    case PNG:
+        return TYPE_SDL;
+    case GIF:
+        return TYPE_GIFLIB;
+    default:
+        return -1;
+    }
+}
+
+// int Utils::formatSupport(std::string& extension);
+// int Utils::libSupport(std::string extension);
+
+
 std::string Utils::toLower(std::string str)
 {
     for(unsigned int i=0; i < str.length(); ++i)
@@ -127,6 +189,9 @@ std::string Utils::combinePath(std::string path1, std::string path2, std::string
     paths.push_back(path5);
     return combinePath(paths);
 }
+
+
+
 
 
 bool Utils::findMatchingFile(std::string prefix, std::vector<std::string> &extensions, std::string &file)

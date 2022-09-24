@@ -14,6 +14,7 @@ Download the source code
 This version is and "migration/adaptation" from original to Visual Studio 2019 standalone compiler
 I config it to windows to be user friendly for windows users
 
+----- Source code change only conection to SDL2, Ex. (original --> #include <SDL2/SDL.h> to --> #include <SDL.h>)
 
 ## 1st Install libraries ##
 	

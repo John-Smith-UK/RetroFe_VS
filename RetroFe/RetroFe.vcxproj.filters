@@ -161,9 +161,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Graphics\Component\VideoComponent.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\Animate\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -312,6 +309,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\ViewInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Component\VideoComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

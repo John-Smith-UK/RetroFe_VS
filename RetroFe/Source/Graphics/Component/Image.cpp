@@ -18,14 +18,12 @@
 #include "../../SDL.h"
 #include "../../Utility/Log.h"
 #include <SDL_image.h>
-//#include "SDL_gifwrap.h"
-// #include "../../SDL2_giflib/CEV_gif.h"
+
 
 
 
 Image::Image(std::string file, std::string altFile, Page &p, int monitor)
     : Component(p)
-  //  , gifanim_(NULL)
     , texture_(NULL)
     , file_(file)
     , altFile_(altFile)

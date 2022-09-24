@@ -18,7 +18,10 @@
 #include "Component.h"
 #include <SDL.h>
 #include <string>
-// #include "../../SDL2_giflib/CEV_gif.h"
+#include "../../Utility/Utils.h"
+
+
+
 
 class Image : public Component
 {
@@ -30,7 +33,7 @@ public:
     void draw();
 
 protected:
-  //  CEV_GifAnim *gifanim_;
+  
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;

@@ -20,6 +20,8 @@
 #include "VideoComponent.h"
 #include "../../Video/VideoFactory.h"
 
+
+
 //todo: this is more of a factory than a builder
 class ImageBuilder
 {
