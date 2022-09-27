@@ -20,10 +20,20 @@
 
 
 
+
+
 Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, int monitor)
 {
     Image *image = NULL;
+   /*
+    int extensions = Utils::libSupport(path.extension().string());
+
+    if (extensions == Utils::TYPE_SDL) {
+    */
+// ORIGINAL CODE
     std::vector<std::string> extensions;
+
+
 
     extensions.push_back("png");
     extensions.push_back("PNG");
@@ -31,9 +41,11 @@ Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, i
     extensions.push_back("JPG");
     extensions.push_back("jpeg");
     extensions.push_back("JPEG");
-   // extensions.push_back("gif");
-  //  extensions.push_back("GIF");
-
+    extensions.push_back("gif");
+    extensions.push_back("GIF");
+    extensions.push_back("apng");
+    extensions.push_back("APNG");
+  
     std::string prefix = Utils::combinePath(path, name);
     std::string file;
 
@@ -45,24 +57,3 @@ Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, i
     return image;
 }
 
-/*
-Image* ImageBuilder::CreateImage(std::string path, Page& p, std::string name, int monitor)
-{
-    Image* image = NULL;
-    std::string extensions = Utils::libSupport();
-     
-    
-  
-
-  
-std::string prefix = Utils::combinePath(path, name);
-std::string file;
-
-if (Utils::findMatchingFile(prefix, extensions, file))
-{
-    image = new Image(file, "", p, monitor);
-}
-
-return image;
-}
-*/

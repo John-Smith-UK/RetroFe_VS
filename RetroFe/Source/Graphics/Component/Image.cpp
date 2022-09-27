@@ -57,21 +57,49 @@ void Image::allocateGraphicsMemory()
 
     if(!texture_)
     {
-        SDL_LockMutex(SDL::getMutex());
-        texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
-        if (!texture_ && altFile_ != "")
+        std::string fileExtension = Utils::toLower(file_.substr(file_.find_last_of(".") + 1));
+
+        SDL_LockMutex(SDL::getMutex()); //lock do acesso
+        if (fileExtension == "gif")
         {
-            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), altFile_.c_str());
+            //load da textura usando outra biblioteca
+            // copy eg. 
+            // animation = CEV_gifAnimLoad("sine.gif", myRender);
+            
+            
+            // what should be
+            //animation = CEV_gifAnimLoad(file_.c_str(), SDL::getRenderer(baseViewInfo.Monitor));   // variable  gifanim_
+                        //texture_ = CEV_gifTexture(animation);
+            //CEV_gifLoopMode(animation, GIF_REPEAT_FOR);
+            
+            //to delete
+            //texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
         }
+        else if (fileExtension == "apng")
+        {
+            //texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
+        }
+        else 
+        {
+            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
+            if (!texture_ && altFile_ != "")
+            {
+                texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), altFile_.c_str());
+            }
+        }
+
 
         if (texture_ != NULL)
         {
             SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
             SDL_QueryTexture(texture_, NULL, NULL, &width, &height);
-            baseViewInfo.ImageWidth  = (float)width;
+            baseViewInfo.ImageWidth = (float)width;
             baseViewInfo.ImageHeight = (float)height;
         }
         SDL_UnlockMutex(SDL::getMutex());
+
+
+        
 
     }
 

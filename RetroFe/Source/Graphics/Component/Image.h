@@ -37,4 +37,5 @@ protected:
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;
+    //CEV_GifAnim * animation;
 };
