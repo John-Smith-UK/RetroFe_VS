@@ -23,9 +23,12 @@
 #include "../Animate/Tween.h"
 #include "../Animate/AnimationEvents.h"
 #include "../../Collection/Item.h"
+
+
 class Component
 {
 public:
+
     Component(Page &p);
     Component(const Component &copy);
     virtual ~Component();
@@ -46,6 +49,7 @@ public:
 
     virtual void update(float dt);
     virtual void draw();
+   
     void setTweens(AnimationEvents *set);
     virtual bool isPlaying();
     virtual bool isJukeboxPlaying();
@@ -66,6 +70,8 @@ public:
     virtual void setImage(std::string filePath, int id = -1) {};
     int getId( );
 
+    
+   
 protected:
     Page &page;
 
@@ -79,6 +85,11 @@ private:
     AnimationEvents *tweens_;
     Animation *currentTweens_;
     SDL_Texture *backgroundTexture_;
+    SDL_Rect rect;
+        
+  
+
+
 
     ViewInfo     storeViewInfo_;
     unsigned int currentTweenIndex_;

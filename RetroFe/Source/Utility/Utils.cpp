@@ -34,77 +34,6 @@ Utils::~Utils()
 }
 
 
-
-/* extension 	> File extension as String
-* return - int 	< extensions of file type or -1 if no match
-*/
-
-/*
-int Utils::formatSupport(std::string extension) {
-    // convert character to upper case for comparison
-    auto upper = [](char a) -> char {
-        if (a > 0x60 && a < 0x7B) return (char)(a - 0x20);
-        else return a;
-    };
-
-    // convert extension string, ignoring leading dot
-    std::string extensionUppercase = "";
-    for (unsigned i = 1; i < extension.length(); i++) {
-        extensionUppercase += upper(extension[i]);
-    }
-
-        // sort by first character of extension
-    switch (extensionUppercase[0]) {
-    case 'A':
-        // APNG 
-        if (!extensionUppercase.compare("APNG"))  return APNG;
-        break;
-    case 'G':
-        // GIF 
-        if (!extensionUppercase.compare("GIF"))  return GIF;
-        break;
-    case 'J':
-        // JP(E)G 
-        if (!extensionUppercase.compare("JPG"))  return JPG;
-        if (!extensionUppercase.compare("JPEG")) return JPG;
-        break;
-    case 'P':
-        // PNG 
-        if (!extensionUppercase.compare("PNG"))  return PNG;
-        break;
-    default:
-        return -1;
-    }
-
-    return -1;
-}
-
-
-
-/*
-* formatSupport	- Return library supporting file type
-* extension 	> File extension as String                  
-* return - int 	< LIB_SUPPORT or -1 if unsupported
-
-
-
-
-int Utils::libSupport(std::string extension) {
-    switch (formatSupport (extension)) {
-    case JPG:
-    case PNG:
-        return TYPE_SDL;
-    case GIF:
-        return TYPE_GIFLIB;
-    case APNG:
-        return TYPE_APNG;
-    default:
-        return -1;
-    }
-}
-
-
-*/
 std::string Utils::toLower(std::string str)
 {
     for(unsigned int i=0; i < str.length(); ++i)
@@ -200,27 +129,7 @@ std::string Utils::combinePath(std::string path1, std::string path2, std::string
     return combinePath(paths);
 }
 
-/*
-int Utils::findMatchingFile(std::string prefix, std::string &extensions, std::string& file)
-{
-    for (unsigned int i = 0; i < extensions.size(); ++i)
-    {
-        std::string temp = prefix + "." + extensions[i];
-        temp = Configuration::convertToAbsolutePath(Configuration::absolutePath, temp);
 
-        std::ifstream f(temp.c_str());
-
-        if (f.good())
-        {
-            file = temp;
-            return true;
-        }
-    }
-
-    return false;
-}
-*/
-// ORIGINAL CODE
 bool Utils::findMatchingFile(std::string prefix, std::vector<std::string> &extensions, std::string &file)
 {
     for(unsigned int i = 0; i < extensions.size(); ++i)

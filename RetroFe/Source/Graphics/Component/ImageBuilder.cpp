@@ -21,30 +21,26 @@
 
 
 
-
 Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, int monitor)
 {
     Image *image = NULL;
-   /*
-    int extensions = Utils::libSupport(path.extension().string());
 
-    if (extensions == Utils::TYPE_SDL) {
-    */
-// ORIGINAL CODE
-    std::vector<std::string> extensions;
+   
+   std::vector<std::string> extensions;
 
+        extensions.push_back("png");
+        extensions.push_back("PNG");
+        extensions.push_back("jpg");
+        extensions.push_back("JPG");
+        extensions.push_back("jpeg");
+        extensions.push_back("JPEG");
+        extensions.push_back("gif");
+        extensions.push_back("GIF");
+        extensions.push_back("apng");
+        extensions.push_back("APNG");
+    
 
-
-    extensions.push_back("png");
-    extensions.push_back("PNG");
-    extensions.push_back("jpg");
-    extensions.push_back("JPG");
-    extensions.push_back("jpeg");
-    extensions.push_back("JPEG");
-    extensions.push_back("gif");
-    extensions.push_back("GIF");
-    extensions.push_back("apng");
-    extensions.push_back("APNG");
+    
   
     std::string prefix = Utils::combinePath(path, name);
     std::string file;

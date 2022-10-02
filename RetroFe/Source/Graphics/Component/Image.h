@@ -23,6 +23,8 @@
 
 
 
+
+
 class Image : public Component
 {
 public:
@@ -31,11 +33,15 @@ public:
     void freeGraphicsMemory();
     void allocateGraphicsMemory();
     void draw();
-
-protected:
+     
+  
+       
+  protected:
   
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;
-    //CEV_GifAnim * animation;
+    
+   
+    
 };

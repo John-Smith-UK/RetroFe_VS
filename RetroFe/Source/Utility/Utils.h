@@ -31,39 +31,9 @@ public:
     static std::string getParentDirectory(std::string filePath);
     static std::string getFileName(std::string filePath);
    
-    /* whats file format options*/
-    
-    enum FILE_TYPE {
-        JPG,
-        PNG,
-        JPEG,
-        GIF,
-        APNG
-     };
-    /*lib type support*/
 
-    enum LIB_SUPPORT {
-        TYPE_SDL,
-        TYPE_GIFLIB,
-        TYPE_APNG
-    };
-
-  /*  enum EXCEPT {
-        EXCEPT_IMG_LOAD_FAIL,
-        EXCEPT_IMG_OPEN_FAIL
-    }; 
-*/
-    
-   /* static int formatSupport(std::string extension);
-    static int libSupport(std::string extension);*/
-
-   
-    // static int findMatchingFile(std::string prefix, std::string& extensions, std::string& file);
-    // ORIGINAL CODE
     static bool findMatchingFile(std::string prefix, std::vector<std::string> &extensions, std::string &file);
     
-  
-
     static std::string toLower(std::string str);
     static std::string uppercaseFirst(std::string str);
     static std::string filterComments(std::string line);

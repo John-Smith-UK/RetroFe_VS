@@ -19,6 +19,10 @@
 #include "../../Utility/Log.h"
 #include "../../SDL.h"
 #include "../PageBuilder.h"
+//#include "SDL_gifwrap.c"
+
+
+
 
 Component::Component(Page &p)
 : page(p)
@@ -72,15 +76,16 @@ void Component::freeGraphicsMemory()
         SDL_UnlockMutex(SDL::getMutex());
 
         backgroundTexture_ = NULL;
-    }
+    } 
 }
+
 void Component::allocateGraphicsMemory()
 {
-    if ( !backgroundTexture_ )
+    if (!backgroundTexture_)
     {
         // make a 4x4 pixel wide surface to be stretched during rendering, make it a white background so we can use
         // color  later
-        SDL_Surface *surface = SDL_CreateRGBSurface(0, 4, 4, 32, 0, 0, 0, 0);
+        SDL_Surface* surface = SDL_CreateRGBSurface(0, 4, 4, 32, 0, 0, 0, 0);
         SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 255, 255, 255));
 
         SDL_LockMutex(SDL::getMutex());
@@ -90,8 +95,9 @@ void Component::allocateGraphicsMemory()
         SDL_FreeSurface(surface);
         SDL_SetTextureBlendMode(backgroundTexture_, SDL_BLENDMODE_BLEND);
     }
-}
 
+   
+}
 
 void Component::deInitializeFonts()
 {
@@ -103,7 +109,7 @@ void Component::initializeFonts()
 }
 
 
-void Component::triggerEvent(std::string event, int menuIndex)
+void Component::triggerEvent(std::string event, int menuIndex)  
 {
     animationRequestedType_ = event;
     animationRequested_     = true;
@@ -215,7 +221,7 @@ void Component::update(float dt)
 void Component::draw()
 {
 
-    if ( backgroundTexture_ )
+    if (backgroundTexture_)
     {
         SDL_Rect rect;
         rect.h = static_cast<int>(baseViewInfo.ScaledHeight());
@@ -225,13 +231,18 @@ void Component::draw()
 
 
         SDL_SetTextureColorMod(backgroundTexture_,
-                               static_cast<char>(baseViewInfo.BackgroundRed*255),
-                               static_cast<char>(baseViewInfo.BackgroundGreen*255),
-                               static_cast<char>(baseViewInfo.BackgroundBlue*255));
+            static_cast<char>(baseViewInfo.BackgroundRed * 255),
+            static_cast<char>(baseViewInfo.BackgroundGreen * 255),
+            static_cast<char>(baseViewInfo.BackgroundBlue * 255));
 
         SDL::renderCopy(backgroundTexture_, baseViewInfo.BackgroundAlpha, NULL, &rect, baseViewInfo, page.getLayoutWidth(baseViewInfo.Monitor), page.getLayoutHeight(baseViewInfo.Monitor));
+            
     }
+
+   
 }
+
+
 
 bool Component::animate()
 {
