@@ -47,8 +47,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;.\ThirdParty\SDL2_CEV;.\ThirdParty\EasyGifReader;$(IncludePath)</IncludePath>
-    <LibraryPath>.\ThirdParty\SDL2_CEV;C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;.\ThirdParty\SDL2_CEV;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)debug</TargetName>
     <OutDir>.\RetroFE\core\</OutDir>
   </PropertyGroup>

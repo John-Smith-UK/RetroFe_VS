@@ -12,7 +12,7 @@ Download the source code
 ### If you Want Converted using only Visual Studio 2019  ###
 
 This version is and "migration/adaptation" from original to Visual Studio 2019 standalone compiler
-I config it to windows to be user friendly for windows users
+I config it to windows to be user friendly for windows users, and if DEV #phulshof update i will try update here to, as so if i manage something i will pull for original GiT.
 
 ----- Source code change only conection to SDL2, Ex. (original --> #include <SDL2/SDL.h> to --> #include <SDL.h>)
 
@@ -30,20 +30,22 @@ Open Retrofe sln file
 
 Choose Debug our Release and menu Build - Rebuild Solution
 
-It will copy the dll´s and retrofe.exe files to RetroFe/Core 
+It will copy the dlls and retrofe.exe files to RetroFe/Core 
 
 If you do right click and clean it will clean all files.
 
 ## Start the dream add GIF Animations ##
 
-	NEW ADDONS 
 
-	GIFLIB-5.2.1
+	NEW ADDONS OPTIONS
+
+	GIFLIB-5.2.1 (alredy compiled with lib and dll)
 	https://sourceforge.net/projects/giflib/
 	
-	GIFWRAP_SDL extra for Giflib
+	GIFWRAP_SDL extra funcions for Giflib
 	https://github.com/grimfang4/SDL_gifwrap
 	
-	
+	SDL2_CEV (its +/- merge of giflib and gifwrap)
+	https://github.com/theMealena/SDL2_giflib_sa
 
-	
+	P.S. /** ALL EXPERIENCES AFTER ADD CODE WILL BE COMMENT (/*  */) ALL CODE DISABLING THEM BECAUSE FOR 99% CASES RETROFE WILL NOT RUN.  IM NEW IN C++ AND PROGRAMING WORLD, AS I STOPED FOR MORE THAN 13 YEARS **//
