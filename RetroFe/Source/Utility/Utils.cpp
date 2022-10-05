@@ -25,6 +25,7 @@
 #include <list>
 
 
+
 Utils::Utils()
 {
 }
@@ -130,7 +131,9 @@ std::string Utils::combinePath(std::string path1, std::string path2, std::string
 }
 
 
-bool Utils::findMatchingFile(std::string prefix, std::vector<std::string> &extensions, std::string &file)
+
+
+bool Utils::findMatchingFile(std::string prefix,std::vector<std::string> &extensions, std::string &file)
 {
     for(unsigned int i = 0; i < extensions.size(); ++i)
     {
@@ -275,3 +278,6 @@ int Utils::gcd( int a, int b )
         return a;
     return gcd( b, a % b );
 }
+
+
+

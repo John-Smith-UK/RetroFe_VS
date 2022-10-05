@@ -34,8 +34,7 @@ public:
     void allocateGraphicsMemory();
     void draw();
      
-  
-       
+   
   protected:
   
     SDL_Texture *texture_;

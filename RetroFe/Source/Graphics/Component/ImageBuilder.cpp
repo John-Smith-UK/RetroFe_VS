@@ -26,6 +26,8 @@ Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, i
     Image *image = NULL;
 
    
+
+    
    std::vector<std::string> extensions;
 
         extensions.push_back("png");

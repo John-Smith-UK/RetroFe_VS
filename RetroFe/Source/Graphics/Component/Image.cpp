@@ -18,8 +18,7 @@
 #include "../../SDL.h"
 #include "../../Utility/Log.h"
 #include <SDL_image.h>
-#include"SDL_gifwrap.h"
-//#include <gif_lib.h>
+
 
 
 
@@ -53,58 +52,82 @@ void Image::freeGraphicsMemory()
     SDL_UnlockMutex(SDL::getMutex());
 }
 
-
-
 void Image::allocateGraphicsMemory()
 {
-
-
     int width;
     int height;
 
-    SDL_LockMutex(SDL::getMutex()); //lock do acesso
-    std::string fileExtension = Utils::toLower(file_.substr(file_.find_last_of(".") + 1));
-    
     if (!texture_)
     {
-
-
-        if (fileExtension == "gif")
-
+        SDL_LockMutex(SDL::getMutex());
+        texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
+        if (!texture_ && altFile_ != "")
         {
-           
-        }                      
-            
-        
-        else if (fileExtension == "apng")
-        {
-            //texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
+            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), altFile_.c_str());
         }
 
-        else 
-        {
-            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
-            if (!texture_  && altFile_ != "")
-            {
-                texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), altFile_.c_str());
-            }
-        }
-
-
-        if (texture_  != NULL)
+        if (texture_ != NULL)
         {
             SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
             SDL_QueryTexture(texture_, NULL, NULL, &width, &height);
             baseViewInfo.ImageWidth = (float)width;
             baseViewInfo.ImageHeight = (float)height;
         }
-        SDL_UnlockMutex(SDL::getMutex());    
+        SDL_UnlockMutex(SDL::getMutex());
 
     }
 
-    
-Component::allocateGraphicsMemory();
+    Component::allocateGraphicsMemory();
+
 }
+// /*GIF AND APNG OPENING FILE OPTIONS*/
+//void Image::allocateGraphicsMemory()
+//{
+//
+//
+//    int width;
+//    int height;
+//
+//    SDL_LockMutex(SDL::getMutex()); //lock do acesso
+//    std::string fileExtension = Utils::toLower(file_.substr(file_.find_last_of(".") + 1));
+//    
+//    if (!texture_)
+//    {
+//
+//        if (fileExtension == "gif")
+//
+//        {
+//            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str()); 
+//        }
+//
+//
+//        else if (fileExtension == "apng")
+//        {
+//            texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str());
+//        }
+//
+//        else
+//
+//        {
+//
+//            if (!texture_ && altFile_ != "")
+//            {
+//                texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), altFile_.c_str());
+//            }
+//
+//            if (texture_ != NULL)
+//            {
+//                SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
+//                SDL_QueryTexture(texture_, NULL, NULL, &width, &height);
+//                baseViewInfo.ImageWidth = (float)width;
+//                baseViewInfo.ImageHeight = (float)height;
+//            }
+//            SDL_UnlockMutex(SDL::getMutex());
+//
+//        }
+//    }
+//Component::allocateGraphicsMemory();
+//}
 
 
 void Image::draw()
