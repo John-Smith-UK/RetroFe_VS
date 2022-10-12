@@ -19,7 +19,7 @@
 #include <SDL.h>
 #include <string>
 #include "../../Utility/Utils.h"
-
+#include "gif_lib.h"
 
 
 
@@ -33,14 +33,17 @@ public:
     void freeGraphicsMemory();
     void allocateGraphicsMemory();
     void draw();
-     
-   
+  
+    //uint16_t w, h; //GIF SUPPORT
+    
+    
+    
   protected:
   
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;
-    
+    SDL_Renderer* myRender; //gif
    
     
 };

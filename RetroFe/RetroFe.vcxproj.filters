@@ -159,9 +159,6 @@
     <ClCompile Include="Source\Video\VideoFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\Component\AnimatedImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Graphics\Animate\Animation.h">
@@ -315,9 +312,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Component\VideoComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\Component\AnimatedImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
