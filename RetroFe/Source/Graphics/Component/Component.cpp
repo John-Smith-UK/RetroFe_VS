@@ -23,7 +23,6 @@
 
 
 
-
 Component::Component(Page &p)
 : page(p)
 {
@@ -71,6 +70,22 @@ void Component::freeGraphicsMemory()
 
     if ( backgroundTexture_ )
     {
+       
+        //GIF SUPPORT
+        if (this->animated) {
+            this->quit = true;
+            animationThread.join();
+        }
+        DGifCloseFile(this->gif_data, nullptr);
+        SDL_FreeSurface(this->surface);
+        if (prerendered) {
+            for (uint32_t i = 0; i < this->frames.size(); i++) {
+                SDL_DestroyTexture(this->frames[i]);
+            }
+        }
+        //END GIF SUPPORT
+                
+       
         SDL_LockMutex(SDL::getMutex());
         SDL_DestroyTexture(backgroundTexture_);
         SDL_UnlockMutex(SDL::getMutex());
@@ -95,6 +110,7 @@ void Component::allocateGraphicsMemory()
 
         SDL_FreeSurface(surface);
         SDL_SetTextureBlendMode(backgroundTexture_, SDL_BLENDMODE_BLEND);
+        
     }
 
    
@@ -181,6 +197,8 @@ void Component::animating() {
         getDelay();
         SDL_Delay(this->delay_val * 10);	//wait (gif resolution is only 1/100 of a sec, mult. by 10 for millis)
     }
+
+   
     return;
 }
 
@@ -204,13 +222,14 @@ void Component::prepare(uint16_t index) {
 
     // destination for copy - if only a region is being updated, this will not cover the whole image
     //SDL_Rect dest;
-    rect.x = im_desc->Left * static_cast<int>(baseViewInfo.XRelativeToOrigin());
-    rect.y = im_desc->Top * static_cast<int>(baseViewInfo.YRelativeToOrigin());
-    rect.w = im_desc->Width * static_cast<int>(baseViewInfo.ScaledWidth());
-    rect.h = im_desc->Height * static_cast<int>(baseViewInfo.ScaledHeight());
+    grect.x = im_desc->Left;
+    grect.y = im_desc->Top;
+    grect.w = im_desc->Width;
+   grect.h = im_desc->Height;
 
-       
-
+   rect = grect;
+    
+  //  SDL::renderCopy(backgroundTexture_, baseViewInfo.BackgroundAlpha, NULL, &rect, baseViewInfo, page.getLayoutWidth(baseViewInfo.Monitor), page.getLayoutHeight(baseViewInfo.Monitor));
     SDL_Surface* temp = SDL_CreateRGBSurfaceFrom((void*)this->gif_data->SavedImages[index].RasterBits, im_desc->Width, im_desc->Height, this->depth, im_desc->Width * (this->depth >> 3), 0, 0, 0, 0);
 
     if (gif_data->SavedImages[index].ImageDesc.ColorMap) { // local colour palette
@@ -232,7 +251,7 @@ void Component::prepare(uint16_t index) {
     }
 
     // copy over region that is being updated, leaving anything else
-    SDL_BlitSurface(temp, nullptr, this->surface, &rect);
+    SDL_BlitSurface(temp, nullptr, this->surface, &grect);
     SDL_FreeSurface(temp);
 
     SDL_DestroyTexture(this->backgroundTexture_); //delete old texture
@@ -253,6 +272,85 @@ void Component::prepare() {
         prepare(frame_index);
     }
 }
+
+
+/*
+    TODO:
+    - Some troublesome gifs will now no longer play at all
+    - Scrambled palette bug still exists on some images
+*/
+
+/*
+[1]: 	Giflib cuts off the first 3 bytes of extension chunk.
+        Payload is then [Packed/Flag Byte], [Upper Delay], [Lower Delay], [Transparency Index].
+*/
+
+//void Component::animatedImage(SDL_Renderer* renderer, const char*  filename)
+//
+//{
+//
+//    gif_data = DGifOpenFileName(filename, nullptr);
+//
+//    // Will be null if image metadata could not be read
+//    if (!gif_data) {
+//        std::cout << "DGifOpenFileName() failed - \'" << "\'" << std::endl;
+//
+//    }
+//
+//    // Will return GIF_ERROR if gif data structure cannot be populated
+//    if (DGifSlurp(gif_data) == GIF_ERROR) {
+//        std::cout << "Failed to load image \' - " << "\'" << std::endl;
+//    }
+//    this->animated = (gif_data->ImageCount > 1);
+//    this->renderer = renderer;
+//    this->w = gif_data->SWidth;
+//    this->h = gif_data->SHeight;
+//
+//    this->frame_count = gif_data->ImageCount;
+//
+//    if (gif_data->SColorMap) {
+//        // NOTE: IN BITS
+//        this->depth = gif_data->SColorMap->BitsPerPixel;
+//
+//        /* I came across an example gif which was reported as 6 BPP by giflib.		*/
+//        /* However, Windows reported it as 8 BPP and when set as 8 BPP, it loaded.	*/
+//        /* In conclusion, I'm going to treat everything as a multiple of 8.			*/
+//        if (this->depth % 8) {
+//            this->depth = 8;
+//        }
+//    }
+//    else {
+//        // No global palette, assume 8 BPP depth
+//        this->depth = 8;
+//    }
+//
+//
+//    // Create surface with existing gif data. 8 bit depth will trigger automatic creation of palette to be filled next
+//    this->surface = SDL_CreateRGBSurfaceFrom((void*)gif_data->SavedImages[0].RasterBits, this->w, this->h, this->depth, this->w * (this->depth >> 3), 0, 0, 0, 0);
+//
+//    if (gif_data->SColorMap) { // if global colour palette defined
+//        // convert from global giflib colour to SDL colour and populate palette
+//        setPalette(gif_data->SColorMap, this->surface);
+//    }
+//    else if (gif_data->SavedImages[this->frame_index].ImageDesc.ColorMap) { // local colour palette
+//        // convert from local giflib colour to SDL colour and populate palette
+//        setPalette(gif_data->SavedImages[this->frame_index].ImageDesc.ColorMap, this->surface);
+//    }
+//
+//    /* Convert to a more friendly format */
+//    SDL_PixelFormat* format = SDL_AllocFormat(SDL_PIXELFORMAT_RGB888);
+//    SDL_Surface* output = SDL_ConvertSurface(surface, format, 0);
+//    SDL_FreeFormat(format);
+//    SDL_FreeSurface(surface);
+//    surface = output;
+//
+//    this->backgroundTexture_ = SDL_CreateTextureFromSurface(this->renderer, this->surface);
+//
+//    if (this->animated) {
+//        if (this->prerendered) prerender();
+//        animationThread = std::thread(&Component::animating, this);
+//    }
+//}
 
 
 // END GIF SUPPORT 
@@ -380,7 +478,7 @@ void Component::draw()
 
     if (backgroundTexture_)
     {
-        SDL_Rect rect;
+        //SDL_Rect rect;
         rect.h = static_cast<int>(baseViewInfo.ScaledHeight());
         rect.w = static_cast<int>(baseViewInfo.ScaledWidth());
         rect.x = static_cast<int>(baseViewInfo.XRelativeToOrigin());
@@ -393,7 +491,8 @@ void Component::draw()
             static_cast<char>(baseViewInfo.BackgroundBlue * 255));
 
         SDL::renderCopy(backgroundTexture_, baseViewInfo.BackgroundAlpha, NULL, &rect, baseViewInfo, page.getLayoutWidth(baseViewInfo.Monitor), page.getLayoutHeight(baseViewInfo.Monitor));
-            
+         
+        
     }
 
    

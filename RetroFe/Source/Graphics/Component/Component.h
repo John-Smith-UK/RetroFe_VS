@@ -25,6 +25,7 @@
 #include "../../Collection/Item.h"
 #include "gif_lib.h"
 #include <thread>
+#include <memory>
 
 #define GIF_MIN_DELAY 0x02   //GIF SUPPORT
 
@@ -76,28 +77,27 @@ public:
     
    // GIF SUPPORT
 
+    
 
 
-
-
+    int w, h;
     uint8_t depth = 0;
     uint16_t frame_index = 0;
     uint16_t delay_val = 0;
     std::vector<SDL_Texture*> frames;
     uint16_t frame_count = 0;
-    bool animated = false;
-    bool ready = false;
+    bool animated = false;   //PROBLABLY WRONG PLACE
+    bool ready = false;     //PROBLABLY WRONG PLACE
+    
 
-    enum state {
-        STATE_PLAY,
-        STATE_PAUSE,
-        STATE_TOGGLE,
-    };
+   
+  
+   // virtual void gifdraw(SDL_Texture* imageTexture);
 
     void setPalette(ColorMapObject* colorMap, SDL_Surface* surface);
     void setIndex(uint16_t index);
     void prepare(uint16_t index);
-
+   // void animatedImage(std::string file);
     void prepare();
     uint16_t getDelay(uint16_t index);
 
@@ -110,7 +110,7 @@ public:
     void prerender();
     GifFileType* gif_data = nullptr;
     SDL_Surface* surface = nullptr;
-    SDL_Renderer* renderer = SDL::getRenderer(baseViewInfo.Monitor);
+    
 
 #ifdef MAKE_NO_PRERENDER
     bool prerendered = false;
@@ -128,7 +128,7 @@ protected:
     Page &page;
 
     std::string playlistName;
-
+    SDL_Renderer* renderer = SDL::getRenderer(baseViewInfo.Monitor); //gif
 private:
 
     //GIF SUPPORT
@@ -146,6 +146,7 @@ private:
     Animation *currentTweens_;
     SDL_Texture *backgroundTexture_;
     SDL_Rect rect;
+    SDL_Rect grect;
         
   
 
