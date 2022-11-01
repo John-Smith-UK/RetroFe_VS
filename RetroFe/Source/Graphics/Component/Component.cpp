@@ -71,19 +71,12 @@ void Component::freeGraphicsMemory()
     if ( backgroundTexture_ )
     {
        
-        //GIF SUPPORT
-        if (this->animated) {
-            this->quit = true;
-            animationThread.join();
-        }
-        DGifCloseFile(this->gif_data, nullptr);
-        SDL_FreeSurface(this->surface);
-        if (prerendered) {
-            for (uint32_t i = 0; i < this->frames.size(); i++) {
-                SDL_DestroyTexture(this->frames[i]);
-            }
-        }
-        //END GIF SUPPORT
+        ////GIF SUPPORT
+        
+
+
+
+        ////END GIF SUPPORT
                 
        
         SDL_LockMutex(SDL::getMutex());
@@ -115,245 +108,13 @@ void Component::allocateGraphicsMemory()
 
    
 }
-// GIF SUPPORT
-/**
-//////* setPalette	- Routine to convert giflib colour palette to SDL colour palette
-* colorMap 		> giflib ColorMapObject containing colour count and palette
-* surface 		> SDL Surface to apply converted palette to
-*/
-void Component::setPalette(ColorMapObject* colorMap, SDL_Surface* surface) {
-    // start gif colour at the start
-    uint8_t* gc = (uint8_t*)colorMap->Colors;
+//// GIF SUPPORT
 
-    // this long, stupid conversion required as SDL *REQUIRES* an alpha channel
-    for (int i = 0; i < colorMap->ColorCount; i++) {
-        //create corresponding SDL_Color
-        SDL_Color sc = { gc[0], gc[1], gc[2], 0 };
-        //set palette with new colour
-        SDL_SetPaletteColors(surface->format->palette, &sc, i, 1);
-        // move along to next colour
-        gc += sizeof(GifColorType);
-    }
-}
-
-/**
-* setIndex	- Set frame index record to provided index with boundaries checked
-* index 	> New frame index
-*/
-void Component::setIndex(uint16_t index) {
-    this->frame_index = index;
-    this->frame_index %= this->frame_count;
-}
-
-/**
-* getDelay	- Load extension chunks related to provided image index and search for a delay value
-* index 	> Target frame index
-*/
-uint16_t Component::getDelay(uint16_t index) {
-    index %= frame_count;
-    //call search for graphics block
-    ExtensionBlock* gfx = getGraphicsBlock(index);
-    //if one was found, update delay
-    if (gfx) {
-        // delay is bounded by somewhat standard lower limit of 0.02 seconds per frame
-        this->delay_val = std::max((uint16_t)GIF_MIN_DELAY, (uint16_t)(((uint16_t)(gfx->Bytes[2]) << 8) + gfx->Bytes[1])); // see [1]
-    }
-    return this->delay_val;
-}
-
-/**
-* getDelay - Shortcut for getDelay() defaulting to current frame index
-*/
-uint16_t Component::getDelay() {
-    return getDelay(frame_index);
-}
-
-/**
-* getGraphicsBlock 	- Locate and return the Extension Block of type Graphics Control for provided index
-* index 			> Target frame index
-*/
-ExtensionBlock* Component::getGraphicsBlock(uint16_t index) {
-    // iterate and look for graphics extension with timing data
-    for (int i = 0; i < gif_data->SavedImages[index].ExtensionBlockCount; i++) {
-        if (gif_data->SavedImages[index].ExtensionBlocks[i].Function == GRAPHICS_EXT_FUNC_CODE) { // found it
-            return &gif_data->SavedImages[index].ExtensionBlocks[i];
-        }
-    }
-    return nullptr;
-}
-
-/**
-* animate - The function is called as a thread and will advance the index and manage timing for the animation automatically.
-*			If the status is set to paused, it will wait before continuing to animate.
-*/
-void Component::animating() {
-    while (!this->quit) {
-        while (!this->play) {
-            if (this->quit) return; //make it possible to break out for quitting while paused
-            SDL_Delay(30);
-        }
-        setIndex(this->frame_index + 1); 	//advance by a frame
-        this->ready = true;					//mark frame as ready to be prepare()'d
-        getDelay();
-        SDL_Delay(this->delay_val * 10);	//wait (gif resolution is only 1/100 of a sec, mult. by 10 for millis)
-    }
-
-   
-    return;
-}
-
-void Component::prerender()
-{
-    for (int i = 0; i < this->frame_count; i++) {
-        prepare(i);
-        this->frames.push_back(this->backgroundTexture_);
-        this->backgroundTexture_ = nullptr; //remove reference so next call to prepare doesn't free it
-    }
-    return;
-}
-
-/**
-* prepare - Create surface from specified index, apply palette and create texture, keying as required.
-*			This should be called as infrequently as possible - static images don't need refreshing.
-*/
-void Component::prepare(uint16_t index) {
-    // shortened for simplicity
-    GifImageDesc* im_desc = &this->gif_data->SavedImages[index].ImageDesc;
-
-    // destination for copy - if only a region is being updated, this will not cover the whole image
-    //SDL_Rect dest;
-    grect.x = im_desc->Left;
-    grect.y = im_desc->Top;
-    grect.w = im_desc->Width;
-   grect.h = im_desc->Height;
-
-   rect = grect;
-    
-  //  SDL::renderCopy(backgroundTexture_, baseViewInfo.BackgroundAlpha, NULL, &rect, baseViewInfo, page.getLayoutWidth(baseViewInfo.Monitor), page.getLayoutHeight(baseViewInfo.Monitor));
-    SDL_Surface* temp = SDL_CreateRGBSurfaceFrom((void*)this->gif_data->SavedImages[index].RasterBits, im_desc->Width, im_desc->Height, this->depth, im_desc->Width * (this->depth >> 3), 0, 0, 0, 0);
-
-    if (gif_data->SavedImages[index].ImageDesc.ColorMap) { // local colour palette
-        // convert from local giflib colour to SDL colour and populate palette
-        setPalette(gif_data->SavedImages[index].ImageDesc.ColorMap, temp);
-    }
-    else if (gif_data->SColorMap) { // if global colour palette defined
-        // convert from global giflib colour to SDL colour and populate palette
-        setPalette(gif_data->SColorMap, temp);
-    }
-
-    //get gfx extension block to find transparent palette index
-    ExtensionBlock* gfx = getGraphicsBlock(index);
-
-    //if gfx block exists and transparency flag is set, set colour key
-    if (gfx && (gfx->Bytes[0] & 0x01)) {
-        // set the key with SDL_TRUE to enable it
-        SDL_SetColorKey(temp, SDL_TRUE, gfx->Bytes[3]);
-    }
-
-    // copy over region that is being updated, leaving anything else
-    SDL_BlitSurface(temp, nullptr, this->surface, &grect);
-    SDL_FreeSurface(temp);
-
-    SDL_DestroyTexture(this->backgroundTexture_); //delete old texture
-    this->backgroundTexture_ = SDL_CreateTextureFromSurface(this->renderer, this->surface);
-
-    this->ready = false; 	// mark current frame as already requested
-}
-
-/**
-* prepare - If in prerender mode, update index. Otherwise, prepare current index frame.
-*/
-void Component::prepare() {
-    if (prerendered) {
-        this->backgroundTexture_ = frames[frame_index];
-        this->ready = false;
-    }
-    else {
-        prepare(frame_index);
-    }
-}
-
-
-/*
-    TODO:
-    - Some troublesome gifs will now no longer play at all
-    - Scrambled palette bug still exists on some images
-*/
-
-/*
-[1]: 	Giflib cuts off the first 3 bytes of extension chunk.
-        Payload is then [Packed/Flag Byte], [Upper Delay], [Lower Delay], [Transparency Index].
-*/
-
-//void Component::animatedImage(SDL_Renderer* renderer, const char*  filename)
-//
-//{
-//
-//    gif_data = DGifOpenFileName(filename, nullptr);
-//
-//    // Will be null if image metadata could not be read
-//    if (!gif_data) {
-//        std::cout << "DGifOpenFileName() failed - \'" << "\'" << std::endl;
-//
-//    }
-//
-//    // Will return GIF_ERROR if gif data structure cannot be populated
-//    if (DGifSlurp(gif_data) == GIF_ERROR) {
-//        std::cout << "Failed to load image \' - " << "\'" << std::endl;
-//    }
-//    this->animated = (gif_data->ImageCount > 1);
-//    this->renderer = renderer;
-//    this->w = gif_data->SWidth;
-//    this->h = gif_data->SHeight;
-//
-//    this->frame_count = gif_data->ImageCount;
-//
-//    if (gif_data->SColorMap) {
-//        // NOTE: IN BITS
-//        this->depth = gif_data->SColorMap->BitsPerPixel;
-//
-//        /* I came across an example gif which was reported as 6 BPP by giflib.		*/
-//        /* However, Windows reported it as 8 BPP and when set as 8 BPP, it loaded.	*/
-//        /* In conclusion, I'm going to treat everything as a multiple of 8.			*/
-//        if (this->depth % 8) {
-//            this->depth = 8;
-//        }
-//    }
-//    else {
-//        // No global palette, assume 8 BPP depth
-//        this->depth = 8;
-//    }
-//
-//
-//    // Create surface with existing gif data. 8 bit depth will trigger automatic creation of palette to be filled next
-//    this->surface = SDL_CreateRGBSurfaceFrom((void*)gif_data->SavedImages[0].RasterBits, this->w, this->h, this->depth, this->w * (this->depth >> 3), 0, 0, 0, 0);
-//
-//    if (gif_data->SColorMap) { // if global colour palette defined
-//        // convert from global giflib colour to SDL colour and populate palette
-//        setPalette(gif_data->SColorMap, this->surface);
-//    }
-//    else if (gif_data->SavedImages[this->frame_index].ImageDesc.ColorMap) { // local colour palette
-//        // convert from local giflib colour to SDL colour and populate palette
-//        setPalette(gif_data->SavedImages[this->frame_index].ImageDesc.ColorMap, this->surface);
-//    }
-//
-//    /* Convert to a more friendly format */
-//    SDL_PixelFormat* format = SDL_AllocFormat(SDL_PIXELFORMAT_RGB888);
-//    SDL_Surface* output = SDL_ConvertSurface(surface, format, 0);
-//    SDL_FreeFormat(format);
-//    SDL_FreeSurface(surface);
-//    surface = output;
-//
-//    this->backgroundTexture_ = SDL_CreateTextureFromSurface(this->renderer, this->surface);
-//
-//    if (this->animated) {
-//        if (this->prerendered) prerender();
-//        animationThread = std::thread(&Component::animating, this);
-//    }
-//}
 
 
 // END GIF SUPPORT 
+
+
 void Component::deInitializeFonts()
 {
 }
@@ -478,7 +239,8 @@ void Component::draw()
 
     if (backgroundTexture_)
     {
-        //SDL_Rect rect;
+        SDL_Rect rect;
+
         rect.h = static_cast<int>(baseViewInfo.ScaledHeight());
         rect.w = static_cast<int>(baseViewInfo.ScaledWidth());
         rect.x = static_cast<int>(baseViewInfo.XRelativeToOrigin());

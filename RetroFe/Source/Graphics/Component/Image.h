@@ -19,11 +19,11 @@
 #include <SDL.h>
 #include <string>
 #include "../../Utility/Utils.h"
-#include "gif_lib.h"
 
 
 
 
+ 
 
 class Image : public Component
 {
@@ -33,28 +33,16 @@ public:
     void freeGraphicsMemory();
     void allocateGraphicsMemory();
     void draw();
-    
-   // void gifframedraw();
-
+ 
      //GIF SUPPORT
     
-    virtual void prepare() {};
 
-  /*  enum state {
-        STATE_PLAY,
-        STATE_PAUSE,
-        STATE_TOGGLE,
-    };*/
-    
-    ///* [[maybe_unused]] attribute is new to C++17 */
-   // virtual void set_status([[maybe_unused]] state s) {};
     //  END GIF SUPPORT
   protected:
-  
+     // SDL_Texture** textures;
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;
-   // SDL_Renderer* myRender; //gif
    
     
 };

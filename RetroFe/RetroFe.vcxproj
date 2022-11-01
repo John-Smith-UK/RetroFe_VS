@@ -47,15 +47,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;.\ThirdParty\SDL2_CEV;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2_image-2.6.2\include;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2-2.24.1\include;.\ThirdParty\rapidxml-1.13;.\ThirdParty\dirent-1.20.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.24.1\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.6.2\lib\x86;.\ThirdParty\rapidxml-1.13;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)debug</TargetName>
     <OutDir>.\RetroFE\core\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\include\SDL2;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\SDL2_image-2.0.5\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;.\ThirdParty\dirent-1.20.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.0.14\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.0.5\lib\x86;.\ThirdParty\rapidxml-1.13;.\ThirdParty\giflib-5.2.1;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\gstreamer\1.0\x86\lib\glib-2.0\include;C:\gstreamer\1.0\x86\include\glib-2.0\glib;C:\gstreamer\1.0\x86\include\glib-2.0;C:\gstreamer\1.0\x86\include\gstreamer-1.0;.\ThirdParty\zlib128-dll\include;.\ThirdParty\sqlite3;.\ThirdParty\SDL2_image-2.6.2\include;.\ThirdParty\SDL2_ttf-2.0.15\include\SDL2;.\ThirdParty\SDL2_mixer-2.0.4\include\SDL2;.\ThirdParty\rapidxml-1.13;.\ThirdParty\dirent-1.20.1\include;.\ThirdParty\SDL2-2.24.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\gstreamer\1.0\x86\lib;.\ThirdParty\zlib128-dll\lib;.\ThirdParty\sqlite3;.\ThirdParty\SDL2-2.24.1\lib\x86;.\ThirdParty\SDL2_ttf-2.0.15\lib\x86;.\ThirdParty\SDL2_mixer-2.0.4\lib\x86;.\ThirdParty\SDL2_image-2.6.2\lib\x86;.\ThirdParty\rapidxml-1.13;$(LibraryPath)</LibraryPath>
     <OutDir>.\RetroFE\core\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -70,8 +70,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>giflib.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <CopyFileToFolders>
@@ -87,13 +86,15 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>C:\Users\RFSV\source\repos\RetroFe\RetroFe\ThirdParty\SDL_gifwrap;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>giflib.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SDL2.lib;zdll.lib;gstapp-1.0.lib;gstbase-1.0.lib;gobject-2.0.lib;glib-2.0.lib;gstreamer-1.0.lib;gstpbutils-1.0.lib;gstriff-1.0.lib;gstvideo-1.0.lib;gstaudio-1.0.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
@@ -202,10 +203,6 @@
     <ClInclude Include="Source\Video\VideoFactory.h" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="Dlls\giflib.dll">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Dlls\liba52-0.dll">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</DestinationFolders>

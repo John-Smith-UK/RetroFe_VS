@@ -39,6 +39,7 @@ VideoComponent * VideoBuilder::createVideo(std::string path, Page &page, std::st
     extensions.push_back("flac");
     extensions.push_back("FLAC");
 
+
     std::string prefix = Utils::combinePath(path, name);
     std::string file;
 

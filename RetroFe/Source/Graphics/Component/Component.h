@@ -23,11 +23,10 @@
 #include "../Animate/Tween.h"
 #include "../Animate/AnimationEvents.h"
 #include "../../Collection/Item.h"
-#include "gif_lib.h"
-#include <thread>
-#include <memory>
 
-#define GIF_MIN_DELAY 0x02   //GIF SUPPORT
+
+
+
 
 
 class Component
@@ -75,60 +74,15 @@ public:
     virtual void setImage(std::string filePath, int id = -1) {};
     int getId( );
     
-   // GIF SUPPORT
-
-    
+//   // GIF SUPPORT
 
 
-    int w, h;
-    uint8_t depth = 0;
-    uint16_t frame_index = 0;
-    uint16_t delay_val = 0;
-    std::vector<SDL_Texture*> frames;
-    uint16_t frame_count = 0;
-    bool animated = false;   //PROBLABLY WRONG PLACE
-    bool ready = false;     //PROBLABLY WRONG PLACE
-    
-
-   
-  
-   // virtual void gifdraw(SDL_Texture* imageTexture);
-
-    void setPalette(ColorMapObject* colorMap, SDL_Surface* surface);
-    void setIndex(uint16_t index);
-    void prepare(uint16_t index);
-   // void animatedImage(std::string file);
-    void prepare();
-    uint16_t getDelay(uint16_t index);
-
-    uint16_t getDelay();
-
-    ExtensionBlock* getGraphicsBlock(uint16_t index);
-
-    void animating();
-
-    void prerender();
-    GifFileType* gif_data = nullptr;
-    SDL_Surface* surface = nullptr;
-    
-
-#ifdef MAKE_NO_PRERENDER
-    bool prerendered = false;
-#else
-    bool prerendered = true;
-#endif
-
-    std::thread animationThread;
-
-    bool play = true;
-    bool quit = false;
-
-   // END GIF SUPPORT   
+//   // END GIF SUPPORT   
 protected:
     Page &page;
 
     std::string playlistName;
-    SDL_Renderer* renderer = SDL::getRenderer(baseViewInfo.Monitor); //gif
+       SDL_Renderer* renderer = nullptr;
 private:
 
     //GIF SUPPORT
@@ -145,9 +99,9 @@ private:
     AnimationEvents *tweens_;
     Animation *currentTweens_;
     SDL_Texture *backgroundTexture_;
-    SDL_Rect rect;
-    SDL_Rect grect;
-        
+  
+   
+  
   
 
 
