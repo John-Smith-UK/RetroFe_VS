@@ -70,38 +70,38 @@ void Image::allocateGraphicsMemory()
 
     if (!texture_)
     {
-        if (fileExtension == "gif")
+        //if (fileExtension == "gif")
 
-        {
-            SDL_LockMutex(SDL::getMutex());
-            IMG_Animation *anim = IMG_LoadAnimation(file_.c_str());
-            width = anim->w;
-            height = anim->h;
-           
+        //{
+        //    //SDL_LockMutex(SDL::getMutex());
+        //    //IMG_Animation *anim = IMG_LoadAnimation(file_.c_str());
+        //    //width = anim->w;
+        //    //height = anim->h;
+        //   
 
-           
+        //   
 
-          
+        //  
 
-            if (!texture_ && altFile_ != "")
-            {
-                IMG_Animation* anim = IMG_LoadAnimation(altFile_.c_str());
-                
-             //////   texture_ = SDL_CreateTextureFromSurface(this->renderer, this->surface);
-            }
+        //    //if (!texture_ && altFile_ != "")
+        //    //{
+        //    //    IMG_Animation* anim = IMG_LoadAnimation(altFile_.c_str());
+        //    //    
+        //    // //////   texture_ = SDL_CreateTextureFromSurface(this->renderer, this->surface);
+        //    //}
 
-            if (texture_ != NULL)
-            {
-                SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
-                SDL_QueryTexture(texture_, NULL, NULL, &width, &height);
-                baseViewInfo.ImageWidth = (float)width;
-                baseViewInfo.ImageHeight = (float)height;
-             
-                   
-            }
-            SDL_UnlockMutex(SDL::getMutex());
-           
-        }
+        //    //if (texture_ != NULL)
+        //    //{
+        //    //    SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
+        //    //    SDL_QueryTexture(texture_, NULL, NULL, &width, &height);
+        //    //    baseViewInfo.ImageWidth = (float)width;
+        //    //    baseViewInfo.ImageHeight = (float)height;
+        //    // 
+        //    //       
+        //    //}
+        //    //SDL_UnlockMutex(SDL::getMutex());
+        //   
+        //}
 
 
         //else if (fileExtension == "apng")
@@ -109,8 +109,8 @@ void Image::allocateGraphicsMemory()
         //    /* texture_ = IMG_LoadTexture(SDL::getRenderer(baseViewInfo.Monitor), file_.c_str())*/;
         //}
 
-        else
-        {
+        //else
+        //{
        
 
             SDL_LockMutex(SDL::getMutex());
@@ -133,7 +133,7 @@ void Image::allocateGraphicsMemory()
 
         Component::allocateGraphicsMemory();
 
-    }
+   /* }*/
 }
 
 

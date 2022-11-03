@@ -1445,8 +1445,8 @@ RetroFE::RETROFE_STATE RetroFE::processUserInput( Page *page )
     SDL_Event e;
     while ( SDL_PollEvent( &e ) )
     {
-        input_.update(e);
-        if ( e.type == SDL_KEYDOWN && !e.key.repeat )
+        input_.update(e); 
+        if ( e.type == SDL_KEYDOWN && !SDL_KEYUP )   // change from !e.key.repeat to !SDL_KEYUP
         {
             break;
         }

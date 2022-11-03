@@ -85,6 +85,9 @@ bool UserInput::initialize()
     MapKey("jbPause", KeyCodePause, false);
     MapKey("jbRestart", KeyCodeRestart, false);
 
+  
+
+
     bool retVal = true;
 
     // At least have controls for either a vertical or horizontal menu

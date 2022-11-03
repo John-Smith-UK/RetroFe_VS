@@ -17,7 +17,7 @@ bool KeyboardHandler::update(SDL_Event &e)
 
     if(e.key.keysym.scancode == scancode_) 
     {
-        pressed_ = (e.type == SDL_KEYDOWN);
+        pressed_ = (e.type == SDL_KEYDOWN ); 
         return true;
     }
 
