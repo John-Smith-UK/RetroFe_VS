@@ -15,18 +15,18 @@
  */
 #pragma once
 
-#include "Image.h"
-#include "VideoComponent.h"
 #include "../Page.h"
+//#include "Image.h"
+#include "AnimatedImage.h"
+#include "VideoComponent.h"
 #include "../../Video/VideoFactory.h"
 
 
+
 //todo: this is more of a factory than a builder
-class VideoBuilder
+class AnimatedImageBuilder
 {
 public:
-    VideoComponent * createVideo(std::string path, Page &page, std::string name, int monitor, bool isTypeVideo, int numLoops = -1);
-
-private:
-    VideoFactory factory_;
+    AnimatedImage* CreateImage(std::string path, Page& p, std::string name, int monitor);
 };
+

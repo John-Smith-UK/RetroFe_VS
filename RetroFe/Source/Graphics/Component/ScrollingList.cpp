@@ -38,7 +38,7 @@
 #include <sstream>
 #include <cctype>
 #include <iomanip>
-
+#include "AnimatedImageBuilder.h"
 
 ScrollingList::ScrollingList( Configuration &c,
                               Page          &p,
@@ -722,6 +722,7 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
 
     ImageBuilder imageBuild;
     VideoBuilder videoBuild;
+    
 
     std::string layoutName;
     config_.getProperty( "layout", layoutName );
@@ -802,6 +803,7 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
             {
                 t = imageBuild.CreateImage( imagePath, page, names[n], baseViewInfo.Monitor );
             }
+       
         }
 
         // check sub-collection path for art

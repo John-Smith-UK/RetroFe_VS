@@ -71,13 +71,7 @@ void Component::freeGraphicsMemory()
     if ( backgroundTexture_ )
     {
        
-        ////GIF SUPPORT
-        
-
-
-
-        ////END GIF SUPPORT
-                
+              
        
         SDL_LockMutex(SDL::getMutex());
         SDL_DestroyTexture(backgroundTexture_);
@@ -108,11 +102,6 @@ void Component::allocateGraphicsMemory()
 
    
 }
-//// GIF SUPPORT
-
-
-
-// END GIF SUPPORT 
 
 
 void Component::deInitializeFonts()
@@ -259,6 +248,7 @@ void Component::draw()
 
    
 }
+
 
 
 

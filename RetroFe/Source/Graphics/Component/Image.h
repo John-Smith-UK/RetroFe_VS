@@ -34,12 +34,9 @@ public:
     void allocateGraphicsMemory();
     void draw();
  
-     //GIF SUPPORT
-    
 
-    //  END GIF SUPPORT
-  protected:
-     // SDL_Texture** textures;
+    protected:
+     
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;

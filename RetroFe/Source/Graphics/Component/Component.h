@@ -53,6 +53,7 @@ public:
 
     virtual void update(float dt);
     virtual void draw();
+  
    
     void setTweens(AnimationEvents *set);
     virtual bool isPlaying();
@@ -74,10 +75,7 @@ public:
     virtual void setImage(std::string filePath, int id = -1) {};
     int getId( );
     
-//   // GIF SUPPORT
-
-
-//   // END GIF SUPPORT   
+  
 protected:
     Page &page;
 
@@ -85,13 +83,6 @@ protected:
        SDL_Renderer* renderer = nullptr;
 private:
 
-    //GIF SUPPORT
-
-
-
-    
-
-    // END GIF SUPPORT
 
     bool animate();
     bool tweenSequencingComplete();
@@ -116,8 +107,5 @@ private:
     int          menuIndex_;
     int          id_;
     
-    // GIF SUPPORT
-    
-
-    // END GIF SUPPORT 
+  
 };

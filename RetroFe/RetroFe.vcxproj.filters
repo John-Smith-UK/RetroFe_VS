@@ -1111,9 +1111,6 @@
     <CopyFileToFolders Include="Dlls\libwavpack-1.dll">
       <Filter>Resource Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Dlls\libwebp-4.dll">
-      <Filter>Resource Files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Dlls\libwinpthread-1.dll">
       <Filter>Resource Files</Filter>
     </CopyFileToFolders>
@@ -1147,5 +1144,10 @@
     <CopyFileToFolders Include="Dlls\zlib1.dll">
       <Filter>Resource Files</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dlls\libwebp-7.dll">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

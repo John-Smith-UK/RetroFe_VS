@@ -32,6 +32,7 @@
 #include <gst/video/video.h>
 #include <gst/audio/audio.h>
 
+
 bool GStreamerVideo::initialized_ = false;
 
 GStreamerVideo::GStreamerVideo( int monitor )

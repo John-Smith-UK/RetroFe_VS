@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with RetroFE.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "ImageBuilder.h"
+#include "AnimatedImageBuilder.h"
 #include "../../Utility/Utils.h"
 #include "../../Utility/Log.h"
 #include <fstream>
@@ -21,23 +21,21 @@
 
 
 
-Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, int monitor)
+AnimatedImage * AnimatedImageBuilder::CreateImage(std::string path, Page &p, std::string name, int monitor)
 {
-    Image *image = NULL;
+    AnimatedImage *image = NULL;
 
    
 
     
    std::vector<std::string> extensions;
 
-        extensions.push_back("png");
-        extensions.push_back("PNG");
-        extensions.push_back("jpg");
-        extensions.push_back("JPG");
-        extensions.push_back("jpeg");
-        extensions.push_back("JPEG");
-        extensions.push_back("webp");
-        extensions.push_back("WEBP");
+   
+        extensions.push_back("gif");
+        extensions.push_back("GIF");
+    
+    
+
     
   
     std::string prefix = Utils::combinePath(path, name);
@@ -45,8 +43,7 @@ Image * ImageBuilder::CreateImage(std::string path, Page &p, std::string name, i
 
     if(Utils::findMatchingFile(prefix, extensions, file))
     {
-        image = new Image(file, "", p, monitor);
-        
+        image = new AnimatedImage(file, "", p, monitor);
     }
 
     return image;
