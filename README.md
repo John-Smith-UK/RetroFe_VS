@@ -12,7 +12,7 @@ Download the source code
 ### If you Want Converted using only Visual Studio 2019  ###
 
 This version is and "migration/adaptation" from original to Visual Studio 2019 standalone compiler
-I config it to windows to be user friendly for windows users, and if DEV #phulshof update i will try update here to, as so if i manage something i will pull for original GiT.
+I config it to windows to be user friendly for windows users, and if DEV #phulshof update i will try update here to, I can't pull to original as it isnt compatible, if is i dont know how to, I add this git link in original forum, so they can see it.
 
 ----- Source code change only conection to SDL2, Ex. (original --> #include <SDL2/SDL.h> to --> #include <SDL.h>)
 
