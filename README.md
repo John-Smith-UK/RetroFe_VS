@@ -37,18 +37,6 @@ If you do right click and clean it will clean all files.
 ## Start the dream add GIF Animations ##
 
 
-	NEW ADDONS OPTIONS
-
-	GIFLIB-5.2.1 (alredy compiled with lib and dll)
-	https://sourceforge.net/projects/giflib/
 	
-	GIFWRAP_SDL extra funcions for Giflib
-	https://github.com/grimfang4/SDL_gifwrap
-	
-	SDL2_CEV (its +/- merge of giflib and gifwrap)
-	https://github.com/theMealena/SDL2_giflib_sa
-
-	Nick fuelsoft SDL2 - GIFLIB VIEWER CODE
-	https://github.com/fuelsoft/viewer/tree/master/subclasses
 
 	P.S. /** ALL EXPERIENCES AFTER ADD CODE WILL BE COMMENT (/*  */) ALL CODE DISABLING THEM BECAUSE FOR 99% CASES RETROFE WILL NOT RUN.  IM NEW IN C++ AND PROGRAMING WORLD, AS I STOPED FOR MORE THAN 13 YEARS **//
