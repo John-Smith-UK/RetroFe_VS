@@ -34,9 +34,12 @@ It will copy the dlls and retrofe.exe files to RetroFe/Core
 
 If you do right click and clean it will clean all files.
 
-## Start the dream add GIF Animations ##
-
-
-	
+## Start the dream add GIF Animations +/- DONE :) ## 
 
 	P.S. /** ALL EXPERIENCES AFTER ADD CODE WILL BE COMMENT (/*  */) ALL CODE DISABLING THEM BECAUSE FOR 99% CASES RETROFE WILL NOT RUN.  IM NEW IN C++ AND PROGRAMING WORLD, AS I STOPED FOR MORE THAN 13 YEARS **//
+	
+	## NEW OBJECTIVES ##
+	
+	- Replace gstreamer by FFMPEG
+	- ADD Search (game  creating an temp collection) 
+	- outhers...
