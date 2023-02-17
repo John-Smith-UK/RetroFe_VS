@@ -722,7 +722,7 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
 
     ImageBuilder imageBuild;
     VideoBuilder videoBuild;
-    
+    AnimatedImageBuilder animatedimageBuild;
 
     std::string layoutName;
     config_.getProperty( "layout", layoutName );
@@ -802,6 +802,11 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
             else
             {
                 t = imageBuild.CreateImage( imagePath, page, names[n], baseViewInfo.Monitor );
+
+                if (!t) //if there is no static image (returns null) and we try to find if it is a gif
+                {
+                    t = animatedimageBuild.CreateImage(imagePath, page, names[n], baseViewInfo.Monitor);
+                }
             }
        
         }
@@ -827,6 +832,11 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
             else
             {
                 t = imageBuild.CreateImage( imagePath, page, names[n], baseViewInfo.Monitor );
+
+                if (!t)
+                {
+                    t = animatedimageBuild.CreateImage(imagePath, page, names[n], baseViewInfo.Monitor);
+                }
             }
         }
     }
@@ -864,6 +874,10 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
         else
         {
             t = imageBuild.CreateImage( imagePath, page, imageType_, baseViewInfo.Monitor );
+            if (!t)
+            {
+                t = animatedimageBuild.CreateImage(imagePath, page, imageType_, baseViewInfo.Monitor);
+            }
         }
     }
 
@@ -877,6 +891,10 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
         else
         {
             t = imageBuild.CreateImage( item->filepath, page, imageType_, baseViewInfo.Monitor );
+            if (!t)
+            {
+                t = animatedimageBuild.CreateImage(item->filepath, page, imageType_, baseViewInfo.Monitor);
+            }
         }
     }
 
@@ -908,6 +926,10 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
             }
 
             t = imageBuild.CreateImage( imagePath, page, names[n], baseViewInfo.Monitor );
+            if (!t)
+            {
+                t = animatedimageBuild.CreateImage(imagePath, page, names[n], baseViewInfo.Monitor);
+            }
 
             // check sub-collection path for art
             if ( !t && !commonMode_ )
@@ -921,7 +943,12 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
                 {
                     config_.getMediaPropertyAbsolutePath( item->collectionInfo->name, imageType_, false, imagePath );
                 }
+
                 t = imageBuild.CreateImage( imagePath, page, names[n], baseViewInfo.Monitor );
+                if (!t)
+                {
+                    t = animatedimageBuild.CreateImage(imagePath, page, names[n], baseViewInfo.Monitor);
+                }
             }
         }
 
@@ -951,12 +978,20 @@ bool ScrollingList::allocateTexture( unsigned int index, Item *item )
             if ( !t )
             {
                 t = imageBuild.CreateImage( imagePath, page, imageType_, baseViewInfo.Monitor );
+                if (!t)
+                {
+                    t = animatedimageBuild.CreateImage(imagePath, page, imageType_, baseViewInfo.Monitor);
+                }
             }
         }
         // check rom directory path for art
         if ( !t )
         {
             t = imageBuild.CreateImage( item->filepath, page, imageType_, baseViewInfo.Monitor );
+            if (!t)
+            {
+                t = animatedimageBuild.CreateImage(item->filepath, page, imageType_, baseViewInfo.Monitor);
+            }
         }
 
     }

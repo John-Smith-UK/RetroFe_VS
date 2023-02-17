@@ -250,8 +250,6 @@ void Component::draw()
 }
 
 
-
-
 bool Component::animate()
 {
     bool completeDone = false;
@@ -423,7 +421,9 @@ bool Component::animate()
                 else
                     baseViewInfo.Monitor = static_cast<unsigned int>(tween->animate(elapsedTime, storeViewInfo_.Monitor));
                 break;
+            case TWEEN_PROPERTY_GIFFRAMES:
 
+                break;
             case TWEEN_PROPERTY_NOP:
                 break;
             }

@@ -16,6 +16,7 @@
 #include "GStreamerVideo.h"
 #include "../Graphics/ViewInfo.h"
 #include "../Graphics/Component/Image.h"
+#include "../Graphics/Component/AnimatedImage.h"
 #include "../Database/Configuration.h"
 #include "../Utility/Log.h"
 #include "../Utility/Utils.h"

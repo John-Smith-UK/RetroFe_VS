@@ -23,29 +23,20 @@
 
 AnimatedImage * AnimatedImageBuilder::CreateImage(std::string path, Page &p, std::string name, int monitor)
 {
-    AnimatedImage *image = NULL;
-
+    AnimatedImage *animatedimage = NULL;
+    std::vector<std::string> extensions;
    
+    extensions.push_back("gif");
+    extensions.push_back("GIF");
 
-    
-   std::vector<std::string> extensions;
-
-   
-        extensions.push_back("gif");
-        extensions.push_back("GIF");
-    
-    
-
-    
-  
     std::string prefix = Utils::combinePath(path, name);
     std::string file;
 
     if(Utils::findMatchingFile(prefix, extensions, file))
     {
-        image = new AnimatedImage(file, "", p, monitor);
+        animatedimage = new AnimatedImage(file, "", p, monitor);
     }
 
-    return image;
+    return animatedimage;
 }
 

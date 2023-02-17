@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with RetroFE.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "Image.h"
+//#include "Image.h"
 #include"AnimatedImage.h"
 #include "../ViewInfo.h"
 #include "../../SDL.h"
@@ -21,39 +21,21 @@
 #include <SDL_image.h>
 
 
+AnimatedImage::AnimatedImage(std::string file, std::string altFile, Page& p, int monitor, bool isAlwaysAnimated, std::string frameLoopType)
+    : Component(p)
+    , texture_(NULL)
+    , file_(file)
+    , altFile_(altFile)
 
-
-
-//IMG_Animation* anim;
-//SDL_Texture** textures;
-
-
-static void draw_background(SDL_Renderer* renderer, int w, int h)
 {
-    SDL_Color col[2] = {
-        { 0x66, 0x66, 0x66, 0xff },
-        { 0x99, 0x99, 0x99, 0xff },
-    };
-    int i, x, y;
-    SDL_Rect rect;
+    baseViewInfo.Monitor = monitor;
+    AnimatedImage::isAlwaysAnimated = isAlwaysAnimated;
+    AnimatedImage::frameLoopType = frameLoopType;
 
-    rect.w = 8;
-    rect.h = 8;
-    for (y = 0; y < h; y += rect.h) {
-        for (x = 0; x < w; x += rect.w) {
-            /* use an 8x8 checkerboard pattern */
-            i = (((x ^ y) >> 3) & 1);
-            SDL_SetRenderDrawColor(renderer, col[i].r, col[i].g, col[i].b, col[i].a);
+    AnimatedImage::finishedLoopOnce = false;
 
-            rect.x = x;
-            rect.y = y;
-            SDL_RenderFillRect(renderer, &rect);
-        }
-    }
+    allocateGraphicsMemory();
 }
-
-
-
 
 AnimatedImage::AnimatedImage(std::string file, std::string altFile, Page& p, int monitor)
     : Component(p)
@@ -63,60 +45,46 @@ AnimatedImage::AnimatedImage(std::string file, std::string altFile, Page& p, int
 
 {
     baseViewInfo.Monitor = monitor;
+    AnimatedImage::isAlwaysAnimated = false;
+    AnimatedImage::frameLoopType = 2; //playLoop
     allocateGraphicsMemory();
 }
 
 AnimatedImage::~AnimatedImage()
 {
     freeGraphicsMemory();
-    IMG_FreeAnimation(anim);
 }
 
 void AnimatedImage::freeGraphicsMemory()
 {
-    /*texture_ = (SDL_Texture**)SDL_calloc(anim->count, sizeof(*texture_));*/
     Component::freeGraphicsMemory();
-    IMG_FreeAnimation(anim);
     SDL_LockMutex(SDL::getMutex());
     if (texture_ != NULL)
     {
         for (j = 0; j < anim->count; ++j) {
             SDL_DestroyTexture(texture_[j]);
         }
-
+            IMG_FreeAnimation(anim);
         texture_ = NULL;
 
     }
+    
     SDL_UnlockMutex(SDL::getMutex());
 }
 
 
 void AnimatedImage::allocateGraphicsMemory()
 {
-    
-     
-  
-       
-       /* w = anim->w;
-        h = anim->h;*/
-        
-
-
-
-
         if (!texture_)
         {
             anim = IMG_LoadAnimation(file_.c_str());
-            SDL_LockMutex(SDL::getMutex());
-            
-
             texture_ = (SDL_Texture**)SDL_calloc(anim->count, sizeof(*texture_));
-            
+            SDL_LockMutex(SDL::getMutex());
         
         if (!texture_ && altFile_ != "")
         {
             anim = IMG_LoadAnimation(altFile_.c_str());
-
+            texture_ = (SDL_Texture**)SDL_calloc(anim->count, sizeof(*texture_));
         }
 
         if (texture_ != NULL)
@@ -124,36 +92,33 @@ void AnimatedImage::allocateGraphicsMemory()
             texture_ = (SDL_Texture**)SDL_calloc(anim->count, sizeof(*texture_));
             for (j = 0; j < anim->count; ++j)
             {
-                texture_[j] = SDL_CreateTextureFromSurface(SDL::getRenderer(baseViewInfo.Monitor), anim->frames[j]);
+                if (frameLoopType == "playOnce" || frameLoopType == "playLoop") //normal gif
+                {
+                    texture_[j] = SDL_CreateTextureFromSurface(SDL::getRenderer(baseViewInfo.Monitor), anim->frames[j]);
+                }
+                else { //inverted gif
+                    texture_[j] = SDL_CreateTextureFromSurface(SDL::getRenderer(baseViewInfo.Monitor), anim->frames[anim->count - 1 - j]);
+                }
             }
-            current_frame = 0;
+           // current_frame = 0;
 
-            //draw_background(SDL::getRenderer(baseViewInfo.Monitor), w, h);
-            // SDL_RenderCopy(renderer, texture_[current_frame], NULL, NULL);
-            //SDL_RenderPresent(SDL::getRenderer(baseViewInfo.Monitor));
-
-              SDL_SetTextureBlendMode(texture_[current_frame], SDL_BLENDMODE_BLEND);
-              SDL_QueryTexture(texture_[current_frame], NULL, NULL, &w, &h);
+            SDL_SetTextureBlendMode(texture_[current_frame], SDL_BLENDMODE_BLEND);
+            SDL_QueryTexture(texture_[current_frame], NULL, NULL, &w, &h);
             baseViewInfo.ImageWidth = (float)w;
             baseViewInfo.ImageHeight = (float)h;
 
-            if (anim->delays[current_frame]) {
-                delay = anim->delays[current_frame];
-            }
-            else
-            {
-                delay = 100;
-            }
-            // SDL_Delay(delay);
-           
+                     
         }
+        setSpeed(anim->count);
+        setPlaying();
 
-        SDL_UnlockMutex(SDL::getMutex());
+
+SDL_UnlockMutex(SDL::getMutex());
 
 
         }
 
-    Component::allocateGraphicsMemory();
+        Component::allocateGraphicsMemory();
 
 }
 
@@ -163,16 +128,12 @@ void AnimatedImage::allocateGraphicsMemory()
 
 void AnimatedImage::draw()
 {
-
-  
     Component::draw();
 
-
+    startTime = 176;
     if (texture_)
 
     {
-
-
         SDL_Rect rect;
 
         rect.x = static_cast<int>(baseViewInfo.XRelativeToOrigin());
@@ -180,17 +141,91 @@ void AnimatedImage::draw()
         rect.h = static_cast<int>(baseViewInfo.ScaledHeight());
         rect.w = static_cast<int>(baseViewInfo.ScaledWidth());
 
-        //SDL_RenderCopy(renderer, texture_[current_frame], NULL, NULL);
+       // SDL_Delay(10);
+
+        if (isPlaying_)
+        {
+            
+            if ((frameLoopType == "playOnce" || frameLoopType == "playInvertedOnce") && current_frame == anim->count - 1 || finishedLoopOnce)
+            {
+                /*if (current_frame == anim->count - 1 || finishedLoopOnce)*/
+               /* {*/
+                    current_frame = 0;
+                    finishedLoopOnce = true;
+            }
+            else if (frameLoopType == "noPlay")
+            {
+                current_frame = 0;
+            }
+                else {
+                    current_frame = ((SDL_GetTicks() - startTime) * once / speed) % anim->count;
+                }
+         
+
+        }
+        else 
+        {
+            current_frame = 0;
+        }
+
         SDL::renderCopy(texture_[current_frame], baseViewInfo.Alpha, NULL, &rect, baseViewInfo, page.getLayoutWidth(baseViewInfo.Monitor), page.getLayoutHeight(baseViewInfo.Monitor));
+    }
+}
 
-        
 
-        current_frame = (current_frame + 1) % anim->count;
+void AnimatedImage::triggerEvent(std::string event, int menuIndex)
+{
+    if (anim)
+    {
+        Component::triggerEvent(event, menuIndex);
+        if (event == "highlightEnter")
+        {
+            setPlaying();
+        }
 
+        if (event == "menuEnter") //for animated images that are not aprt of menu
+        {
+            finishedLoopOnce = false;
+            setPlaying();
+        }
 
     }
-
-
-
-
 }
+
+void AnimatedImage::setPlaying()
+{
+    if (AnimatedImage::isAlwaysAnimated)
+    {
+        isPlaying_ = true;
+        return;
+    }
+
+    Item* selectedGif = page.getSelectedItem();
+    if (selectedGif)
+    {
+        std::string filepath = file_.c_str();
+        if (filepath.find(selectedGif->title.c_str()) < filepath.length()) //if it is selected item
+        {
+            isPlaying_ = true;
+        }
+        else
+        {
+            isPlaying_ = false;
+        }
+    }
+}
+void AnimatedImage::setSpeed(int frameCount)
+{
+
+   
+    //60 => 1000
+    //30 => 3000 30*30
+    //10 => 3100 10*3100
+
+
+    //int defaultAnimValue = 1000; //1sec = 60frames
+    //int result = (defaultAnimValue * anim->count) / 60;
+    //speed = result;
+    speed = 7500;
+}
+

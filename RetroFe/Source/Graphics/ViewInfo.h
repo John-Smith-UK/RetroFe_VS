@@ -73,6 +73,7 @@ public:
     float        ContainerHeight;
     int          Monitor;
     float        Volume;
+    float        gifframes;
 
 private:
     float AbsoluteHeight() const;

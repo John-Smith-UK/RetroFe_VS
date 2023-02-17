@@ -37,7 +37,32 @@
     <!----------------------------------------------------------------------------------------------------------------------------------->
     <!-- Main menu fixed art & text -->
     <!----------------------------------------------------------------------------------------------------------------------------------->
-
+<animeimage src="images/logo.gif" alpha="0" x="right" y="bottom" xOrigin="right" yOrigin="bottom" height="300" layer="17" frameloop="playLoop">
+		<onMenuEnter menuIndex="0"><set duration=".25"><animate type="alpha" to="1"/></set></onMenuEnter>
+		<onMenuExit  menuIndex="0"><set duration=".25"><animate type="alpha" to="0"/></set></onMenuExit>
+	</animeimage>
+	
+	<animeimage src="images/logo.gif" alpha="0" x="left" y="bottom" xOrigin="left" yOrigin="bottom" height="300" layer="17" frameloop="playInverted">
+		<onMenuEnter menuIndex="0"><set duration=".25"><animate type="alpha" to="1"/></set></onMenuEnter>
+		<onMenuExit  menuIndex="0"><set duration=".25"><animate type="alpha" to="0"/></set></onMenuExit>
+	</animeimage>
+	
+<animeimage src="images/logo.gif" alpha="0" x="right" y="top" xOrigin="right" yOrigin="top" height="300" layer="17" frameloop="playOnce">
+		<onMenuEnter menuIndex="0"><set duration=".25"><animate type="alpha" to="1"/></set></onMenuEnter>
+		<onMenuExit  menuIndex="0"><set duration=".25"><animate type="alpha" to="0"/></set></onMenuExit>
+	</animeimage>
+	
+<animeimage src="images/logo.gif" alpha="0" x="left" y="top" xOrigin="left" yOrigin="top" height="300" layer="17" frameloop="playInvertedOnce">
+		<onMenuEnter menuIndex="0"><set duration=".25"><animate type="alpha" to="1"/></set></onMenuEnter>
+		<onMenuExit  menuIndex="0"><set duration=".25"><animate type="alpha" to="0"/></set></onMenuExit>
+	</animeimage>
+	
+	<animeimage src="images/logo.gif" alpha="0" x="center" y="300" xOrigin="center" yOrigin="center" height="300" layer="17" frameloop="noPlay">
+		<onMenuEnter menuIndex="0"><set duration=".25"><animate type="alpha" to="1"/></set></onMenuEnter>
+		<onMenuExit  menuIndex="0"><set duration=".25"><animate type="alpha" to="0"/></set></onMenuExit>
+	</animeimage>
+	
+<!----------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- Bar -->
     <image src="images/bar.png" alpha="0" x="center" y="center" width="stretch" height="135" xOrigin="center" yOrigin="center" layer="11">

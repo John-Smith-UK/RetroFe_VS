@@ -16,6 +16,7 @@
 #pragma once
 
 #include "Component/Image.h"
+#include "Component/AnimatedImageBuilder.h"
 #include "FontCache.h"
 #include <SDL.h>
 #include <SDL_mixer.h>

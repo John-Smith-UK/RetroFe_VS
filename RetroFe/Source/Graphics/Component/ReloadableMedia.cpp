@@ -426,6 +426,7 @@ Component *ReloadableMedia::findComponent(std::string collection, std::string ty
     Component *component = NULL;
     VideoBuilder videoBuild;
     ImageBuilder imageBuild;
+    AnimatedImageBuilder animatedImageBuild;
 
     // check the system folder
     if (layoutMode_)
@@ -473,6 +474,11 @@ Component *ReloadableMedia::findComponent(std::string collection, std::string ty
     else
     {
         component = imageBuild.CreateImage(imagePath, page, basename, baseViewInfo.Monitor);
+
+        if (!component) //if there is no static image (returns null) and we try to find if it is a gif
+        {
+            component = animatedImageBuild.CreateImage(imagePath, page, basename, baseViewInfo.Monitor);
+        }
     }
 
     return component;

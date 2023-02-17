@@ -36,7 +36,6 @@ public:
  
 
     protected:
-     
     SDL_Texture *texture_;
     std::string  file_;
     std::string  altFile_;

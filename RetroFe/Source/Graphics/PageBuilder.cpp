@@ -19,6 +19,7 @@
 #include "ViewInfo.h"
 #include "Component/Container.h"
 #include "Component/Image.h"
+#include "Component/AnimatedImage.h"
 #include "Component/Text.h"
 #include "Component/ReloadableText.h"
 #include "Component/ReloadableMedia.h"
@@ -411,12 +412,14 @@ bool PageBuilder::buildComponents(xml_node<> *layout, Page *page)
             altImagePath = Utils::combinePath(Configuration::absolutePath, "layouts", layoutName, std::string(src->value()));
 
             int monitor = monitorXml ? Utils::convertInt(monitorXml->value()) : monitor_;
+            std::string fileExtension = Utils::toLower(imagePath.substr(imagePath.find_last_of(".") + 1));
+
             Image *c = new Image(imagePath, altImagePath, *page, monitor);
-            c->setId( id );
-            xml_attribute<> *menuScrollReload = componentXml->first_attribute("menuScrollReload");
+            c->setId(id);
+            xml_attribute<>* menuScrollReload = componentXml->first_attribute("menuScrollReload");
             if (menuScrollReload &&
                 (Utils::toLower(menuScrollReload->value()) == "true" ||
-                 Utils::toLower(menuScrollReload->value()) == "yes"))
+                    Utils::toLower(menuScrollReload->value()) == "yes"))
             {
                 c->setMenuScrollReload(true);
             }
@@ -425,7 +428,51 @@ bool PageBuilder::buildComponents(xml_node<> *layout, Page *page)
             page->addComponent(c);
         }
     }
+    for (xml_node<>* componentXml = layout->first_node("animeimage"); componentXml; componentXml = componentXml->next_sibling("animeimage"))
+    {
+        xml_attribute<>* src = componentXml->first_attribute("src");
+        xml_attribute<>* idXml = componentXml->first_attribute("id");
+        xml_attribute<>* monitorXml = componentXml->first_attribute("monitor");
+        xml_attribute<>* frameLoop = componentXml->first_attribute("frameloop");
 
+        std::string frameLoopValue = frameLoop->value();
+        int id = -1;
+        if (idXml)
+        {
+            id = Utils::convertInt(idXml->value());
+        }
+
+        if (!src)
+        {
+            Logger::write(Logger::ZONE_ERROR, "Layout", "AnimeImage component in layout does not specify a source image file");
+        }
+        else
+        {
+            std::string imagePath;
+            imagePath = Utils::combinePath(Configuration::convertToAbsolutePath(layoutPath, imagePath), std::string(src->value()));
+            std::string layoutName;
+            config_.getProperty("layout", layoutName);
+            std::string altImagePath;
+            altImagePath = Utils::combinePath(Configuration::absolutePath, "layouts", layoutName, std::string(src->value()));
+
+            int monitor = monitorXml ? Utils::convertInt(monitorXml->value()) : monitor_;
+          
+
+            AnimatedImage *c = new AnimatedImage(imagePath, altImagePath, *page, monitor, true, frameLoopValue );
+            c->setId(id);
+            xml_attribute<>* menuScrollReload = componentXml->first_attribute("menuScrollReload");
+            if (menuScrollReload &&
+                (Utils::toLower(menuScrollReload->value()) == "true" ||
+                    Utils::toLower(menuScrollReload->value()) == "yes"))
+            {
+                c->setMenuScrollReload(true);
+            }
+            buildViewInfo(componentXml, c->baseViewInfo);
+            loadTweens(c, componentXml);
+            page->addComponent(c);
+        }
+    }
+   
 
     for(xml_node<> *componentXml = layout->first_node("video"); componentXml; componentXml = componentXml->next_sibling("video"))
     {

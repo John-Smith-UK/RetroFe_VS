@@ -16,7 +16,6 @@
 #pragma once
 
 #include "../Page.h"
-//#include "Image.h"
 #include "AnimatedImage.h"
 #include "VideoComponent.h"
 #include "../../Video/VideoFactory.h"

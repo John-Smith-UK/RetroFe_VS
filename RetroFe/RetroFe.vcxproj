@@ -123,6 +123,8 @@
     <ClCompile Include="Source\Graphics\Animate\TweenSet.cpp" />
     <ClCompile Include="Source\Graphics\ComponentItemBinding.cpp" />
     <ClCompile Include="Source\Graphics\ComponentItemBindingBuilder.cpp" />
+    <ClCompile Include="Source\Graphics\Component\AnimatedImage.cpp" />
+    <ClCompile Include="Source\Graphics\Component\AnimatedImageBuilder.cpp" />
     <ClCompile Include="Source\Graphics\Component\Component.cpp" />
     <ClCompile Include="Source\Graphics\Component\Container.cpp" />
     <ClCompile Include="Source\Graphics\Component\Image.cpp" />
@@ -176,6 +178,8 @@
     <ClInclude Include="Source\Graphics\Animate\TweenTypes.h" />
     <ClInclude Include="Source\Graphics\ComponentItemBinding.h" />
     <ClInclude Include="Source\Graphics\ComponentItemBindingBuilder.h" />
+    <ClInclude Include="Source\Graphics\Component\AnimatedImage.h" />
+    <ClInclude Include="Source\Graphics\Component\AnimatedImageBuilder.h" />
     <ClInclude Include="Source\Graphics\Component\Component.h" />
     <ClInclude Include="Source\Graphics\Component\Container.h" />
     <ClInclude Include="Source\Graphics\Component\Image.h" />

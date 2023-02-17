@@ -40,7 +40,7 @@ public:
     virtual void allocateGraphicsMemory();
     virtual void deInitializeFonts();
     virtual void initializeFonts();
-    void triggerEvent(std::string event, int menuIndex = -1);
+    virtual void triggerEvent(std::string event, int menuIndex = -1);
     void setPlaylist(std::string name );
     void setNewItemSelected();
     void setNewScrollItemSelected();
@@ -53,7 +53,7 @@ public:
 
     virtual void update(float dt);
     virtual void draw();
-  
+   // virtual void Animateddraw();
    
     void setTweens(AnimationEvents *set);
     virtual bool isPlaying();
